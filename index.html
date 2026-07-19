@@ -2,54 +2,90 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="5ZAdplTZ0Wp3bQVP8WzmbG5csJWicTfCUM_XapK0Zt8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أخبار الرياضة 24 | قريباً</title>
+    <title>أخبار الرياضة 24</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-        .container {
-            padding: 20px;
-            max-width: 600px;
-        }
-        h1 {
-            color: #10b981; /* لون أخضر رياضي */
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #a3a3a3;
-            line-height: 1.6;
-        }
-        .badge {
-            background-color: #059669;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+        body { font-family: 'Arial', sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        header { background: #1a1a1a; color: white; padding: 15px; text-align: center; }
+        .nav { display: flex; justify-content: center; background: #1a1a1a; padding-bottom: 10px; flex-wrap: wrap; }
+        .nav button { background: #e21b1b; color: white; border: none; padding: 10px 15px; margin: 5px; border-radius: 5px; cursor: pointer; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; }
+        .news-item { border-bottom: 1px solid #ddd; padding: 15px; cursor: pointer; }
+        .news-item:hover { background: #f9f9f9; }
+        .tag { color: #e21b1b; font-size: 12px; font-weight: bold; }
+        #details-view { display: none; padding: 20px; }
+        .back-btn { background: #333; color: white; padding: 10px; cursor: pointer; border: none; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="badge">انتظرونا جاري التجهيز ⚽</div>
-        <h1>أهلاً بكم في موقع أخبار الرياضة 24</h1>
-        <p>نعمل حالياً على بناء تجربة فريدة لتغطية كافة الأخبار الرياضية والمباريات المحلية والعالمية فور حدوثها.</p>
-        <p style="color: #e11d48; font-weight: bold;">الموقع سوف يكون متاحاً قريباً جداً!</p>
-    </div>
+<header><h1>أخبار الرياضة 24</h1></header>
+
+<div class="nav">
+    <button onclick="filterNews('الكل')">الرئيسية</button>
+    <button onclick="filterNews('أخبار محلية')">أخبار محلية</button>
+    <button onclick="filterNews('أخبار عالمية')">أخبار عالمية</button>
+    <button onclick="filterNews('أخرى')">أخرى</button>
+</div>
+
+<div class="container" id="main-view">
+    <h3 id="section-title">أخبار اليوم 19 يوليو 2026</h3>
+    <div id="news-list"></div>
+</div>
+
+<div id="details-view" class="container">
+    <button class="back-btn" onclick="goBack()">← العودة للرئيسية</button>
+    <h2 id="det-title"></h2>
+    <p id="det-text" style="line-height: 1.8; font-size: 18px;"></p>
+</div>
+
+<script>
+    const newsData = [
+        {id: 1, tag: "أخرى", title: "تفاصيل نهائي كأس العالم 2026: إنجلترا وفرنسا", details: "في مواجهة تاريخية، دخل المنتخب الإنجليزي المباراة بتشكيل هجومي ضاغط يعتمد على السرعة الفائقة في الأطراف والتحول السريع من الدفاع للهجوم. في المقابل، اعتمد المنتخب الفرنسي تشكيلاً متوازناً يهدف لتأمين الخطوط الخلفية ومحاولة السيطرة على وسط الملعب، إلا أن الدفاع الفرنسي واجه ضغطاً هائلاً طوال المباراة."},
+        {id: 2, tag: "أخبار محلية", title: "الأهلي ينهي اتفاقه مع مهاجم أجنبي جديد", details: "أنهت إدارة النادي الأهلي كافة التفاصيل المالية والتعاقدية مع مهاجم أجنبي من العيار الثقيل لتدعيم الفريق قبل انطلاق الموسم الجديد، ومن المنتظر الإعلان الرسمي خلال ساعات."},
+        {id: 3, tag: "أخبار محلية", title: "الزمالك يجدول ديونه لإنهاء أزمة القيد", details: "نجح مجلس إدارة الزمالك اليوم في التوصل لاتفاق نهائي لجدولة مستحقات اللاعبين والمدربين السابقين، لضمان فتح باب القيد رسمياً وتسجيل الصفقات الجديدة."},
+        {id: 4, tag: "أخبار عالمية", title: "ريال مدريد يفتتح معسكره التحضيري بالولايات المتحدة", details: "وصلت بعثة ريال مدريد اليوم إلى أمريكا لبدء المعسكر الصيفي، وسط ترحيب جماهيري كبير بصفقات الفريق الجديدة استعداداً للموسم القادم."},
+        {id: 5, tag: "أخبار عالمية", title: "مانشستر سيتي يعلن عن صفقة مفاجئة في خط الوسط", details: "أعلن نادي مانشستر سيتي اليوم رسمياً عن التعاقد مع موهبة شابة لتعزيز خط الوسط، بناءً على طلب المدرب بيب جوارديولا لتجديد دماء الفريق."},
+        {id: 6, tag: "أخرى", title: "حكام نهائي المونديال وتقنية الـ VAR", details: "أعلن الاتحاد الدولي اليوم عن طاقم تحكيم النخبة لإدارة النهائي، مع الاعتماد الكلي على تقنية VAR المتطورة لحسم الحالات الجدلية، مما ساهم في إدارة المباراة بفعالية رغم غزارة الأهداف."},
+        {id: 7, tag: "أخرى", title: "تنس: انطلاق بطولة ويمبلدون للناشئين اليوم", details: "بدأت اليوم منافسات بطولة ويمبلدون للناشئين وسط حضور مميز للمواهب الصاعدة من مختلف أنحاء العالم، وشهدت مباريات اليوم منافسة قوية جداً."},
+        {id: 8, tag: "أخرى", title: "تنس: نوفاك ديوكوفيتش يعلن جاهزيته للبطولات القادمة", details: "في تصريحات صحفية اليوم، أكد النجم نوفاك ديوكوفيتش تعافيه الكامل من الإصابة وجاهزيته للمشاركة في سلسلة البطولات الصلبة المقبلة."},
+        {id: 9, tag: "أخبار عالمية", title: "تطورات مفاوضات برشلونة مع نجم الوسط", details: "تشير تقارير صحفية اليوم إلى تسارع وتيرة المفاوضات بين إدارة برشلونة وأحد أندية الدوري الإنجليزي لضم لاعب وسط جديد بطلب من الجهاز الفني."},
+        {id: 10, tag: "أخرى", title: "كرة اليد: المنتخب الوطني يختتم معسكره الأوروبي", details: "اختتم منتخب كرة اليد معسكره التدريبي القوي في أوروبا اليوم، استعداداً للمشاركة في البطولة القارية القادمة، وسط إشادة فنية بأداء اللاعبين."}
+    ];
+
+    function renderNews(filter = 'الكل') {
+        const list = document.getElementById('news-list');
+        list.innerHTML = '';
+        const filtered = filter === 'الكل' ? newsData : newsData.filter(n => n.tag === filter);
+        filtered.forEach(n => {
+            list.innerHTML += `
+                <div class="news-item" onclick="showDetails(${n.id})">
+                    <span class="tag">${n.tag}</span>
+                    <h2 style="font-size: 18px; margin: 5px 0;">${n.title}</h2>
+                </div>`;
+        });
+    }
+
+    function filterNews(tag) {
+        document.getElementById('section-title').innerText = tag === 'الكل' ? 'أخبار اليوم 19 يوليو 2026' : tag;
+        renderNews(tag);
+    }
+
+    function showDetails(id) {
+        const n = newsData.find(x => x.id === id);
+        document.getElementById('det-title').innerText = n.title;
+        document.getElementById('det-text').innerText = n.details;
+        document.getElementById('main-view').style.display = 'none';
+        document.getElementById('details-view').style.display = 'block';
+    }
+
+    function goBack() {
+        document.getElementById('main-view').style.display = 'block';
+        document.getElementById('details-view').style.display = 'none';
+    }
+
+    renderNews();
+</script>
 
 </body>
 </html>
