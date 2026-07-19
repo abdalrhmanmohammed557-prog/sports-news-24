@@ -40,6 +40,34 @@
             display: inline-block;
             margin-bottom: 20px;
         }
+        
+        /* تنسيق مربعات العد التنازلي */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            direction: ltr;
+        }
+        .countdown-box {
+            background-color: #1e1e1e;
+            border: 1px solid #27272a;
+            border-radius: 8px;
+            padding: 10px 15px;
+            min-width: 70px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #10b981;
+            display: block;
+        }
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #71717a;
+        }
+
         .footer {
             margin-top: 40px;
             border-top: 1px solid #27272a;
@@ -71,12 +99,60 @@
         <p>نعمل حالياً على بناء تجربة فريدة لتغطية كافة الأخبار الرياضية والمباريات المحلية والعالمية فور حدوثها.</p>
         <p style="color: #e11d48; font-weight: bold;">الموقع سوف يكون متاحاً قريباً جداً!</p>
         
-        <!-- التعديل الجديد: حقوق المطور والاتصال -->
+        <!-- قسم العد التنازلي -->
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">أيام</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">ساعات</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">دقائق</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">ثواني</span>
+            </div>
+        </div>
+
         <div class="footer">
             <p>تصميم وتطوير: <span>عبدالرحمن منتصر ماهر</span></p>
             <p>للتواصل: <a href="tel:01001126702">01001126702</a></p>
         </div>
     </div>
+
+    <script>
+        // ضبط تاريخ الافتتاح: اليوم 19 يوليو 2026 الساعة 7 مساءً (19:00) بالظبط
+        // الشهور في الجافا سكريبت تبدأ من 0 (يعني شهر 7 هو رقم 6 في الكود)
+        const launchDate = new Date(2026, 6, 19, 19, 0, 0).getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            // حساب الوقت المتبقي
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // عرض النتيجة
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // عند انتهاء الوقت
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.querySelector(".countdown-container").innerHTML = "<p style='color:#10b981; font-weight:bold; font-size:1.5rem;'>تم إطلاق الموقع بنجاح! 🎉</p>";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
