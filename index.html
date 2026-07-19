@@ -2,54 +2,200 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="5ZAdplTZ0Wp3bQVP8WzmbG5csJWicTfCUM_XapK0Zt8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أخبار الرياضة 24 | قريباً</title>
+    <title>أخبار الرياضة 24</title>
     <style>
+        /* إعدادات الخط والألوان العامة */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #121212;
             color: #ffffff;
             margin: 0;
+            padding: 0;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: #1f1f1f;
+            padding: 15px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            border-bottom: 3px solid #ff4757;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4757;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4757;
+        }
+
+        /* الحاوية الرئيسية للمحتوى */
         .container {
-            padding: 20px;
-            max-width: 600px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
-        h1 {
-            color: #10b981; /* لون أخضر رياضي */
-            font-size: 2.5rem;
+
+        /* عنوان القسم */
+        .section-title {
+            font-size: 22px;
+            border-right: 4px solid #ff4757;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* شبكة الأخبار */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* كارت الخبر */
+        .news-card {
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-img-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: #2f3542;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a4b0be;
+            font-size: 14px;
+        }
+
+        .news-content {
+            padding: 15px;
+        }
+
+        .news-tag {
+            background-color: #ff4757;
+            color: white;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
             margin-bottom: 10px;
         }
-        p {
-            font-size: 1.2rem;
-            color: #a3a3a3;
+
+        .news-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .news-content p {
+            color: #a4b0be;
+            font-size: 14px;
+            margin: 0;
             line-height: 1.6;
         }
-        .badge {
-            background-color: #059669;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 20px;
+
+        /* الفوتر (أسفل الصفحة) */
+        footer {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 15px;
+            margin-top: 4px;
+            font-size: 14px;
+            color: #a4b0be;
+            border-top: 1px solid #2f3542;
         }
     </style>
 </head>
 <body>
 
+    <!-- الشريط العلوي والأقسام -->
+    <header>
+        <div class="logo">أخبار الرياضة 24</div>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">الدوري المصري</a></li>
+                <li><a href="#">الكرة العالمية</a></li>
+                <li><a href="#">أنتقالات</a></li>
+            </ul>
+        </</nav>
+    </header>
+
+    <!-- المحتوى الرئيسي للموقع -->
     <div class="container">
-        <div class="badge">انتظرونا جاري التجهيز ⚽</div>
-        <h1>أهلاً بكم في موقع أخبار الرياضة 24</h1>
-        <p>نعمل حالياً على بناء تجربة فريدة لتغطية كافة الأخبار الرياضية والمباريات المحلية والعالمية فور حدوثها.</p>
-        <p style="color: #e11d48; font-weight: bold;">الموقع سوف يكون متاحاً قريباً جداً!</p>
+        <h2 class="section-title">آخر الأخبار</h2>
+        
+        <div class="news-grid">
+            
+            <!-- خبر 1 -->
+            <div class="news-card">
+                <div class="news-img-placeholder">مساحة مخصصة لصورة الخبر</div>
+                <div class="news-content">
+                    <span class="news-tag">الكرة العالمية</span>
+                    <h3>انطلاق مباريات الجولة القادمة في دوري أبطال أوروبا وسط ترقب جماهيري كبير</h3>
+                    <p>تتجه أنظار عشاق كرة القدم الليلة إلى الملاعب الأوروبية لمتابعة قمم كروية نارية منتظرة بين عمالقة القارة العجوز...</p>
+                </div>
+            </div>
+
+            <!-- خبر 2 -->
+            <div class="news-card">
+                <div class="news-img-placeholder">مساحة مخصصة لصورة الخبر</div>
+                <div class="news-content">
+                    <span class="news-tag">الدوري المصري</span>
+                    <h3>استعدادات مكثفة للأندية المصرية لخوض منافسات الأسبوع الجديد من الدوري</h3>
+                    <p>دخلت الفرق في معسكرات مغلقة لرفع اللياقة البدنية وتجهيز الخطط الفنية وسط منافسة شرسة على المربع الذهبي وصدارة الترتيب...</p>
+                </div>
+            </div>
+
+            <!-- خبر 3 -->
+            <div class="news-card">
+                <div class="news-img-placeholder">مساحة مخصصة لصورة الخبر</div>
+                <div class="news-content">
+                    <span class="news-tag">سوق الانتقالات</span>
+                    <h3>تقارير: صفقة كبرى تقترب من الحسم في الميركاتو الصيفي الحالي</h3>
+                    <p>أشارت مصادر مطلعة إلى أن المفاوضات وصلت لمراحل متقدمة بين الناديين لتوقيع العقد الرسمي والإعلان عن الصفقة خلال ساعات...</p>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <!-- أسفل الصفحة -->
+    <footer>
+        <p>جميع الحقوق محفوظة © أخبار الرياضة 24 | 2026</p>
+    </footer>
 
 </body>
 </html>
