@@ -22,14 +22,14 @@
             max-width: 600px;
         }
         h1 {
-            color: #10b981; /* لون أخضر رياضي */
+            color: #10b981;
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: #a3a3a3;
-            line-height: 1.6;
+            margin-bottom: 20px;
         }
         .badge {
             background-color: #059669;
@@ -41,37 +41,36 @@
             margin-bottom: 20px;
         }
         
-        /* تنسيق مربعات العد التنازلي */
+        /* تنسيق مربعات العد التنازلي الجديد */
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             margin: 30px 0;
             direction: ltr;
         }
         .countdown-box {
             background-color: #1e1e1e;
             border: 1px solid #27272a;
-            border-radius: 8px;
-            padding: 10px 15px;
-            min-width: 70px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px 20px;
+            min-width: 80px;
         }
         .countdown-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #10b981;
             display: block;
         }
         .countdown-label {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #71717a;
         }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 50px;
             border-top: 1px solid #27272a;
-            padding-top: 15px;
+            padding-top: 20px;
             font-size: 0.95rem;
             color: #71717a;
         }
@@ -94,28 +93,23 @@
 <body>
 
     <div class="container">
-        <div class="badge">انتظرونا جاري التجهيز ⚽</div>
-        <h1>أهلاً بكم في موقع أخبار الرياضة 24</h1>
-        <p>نعمل حالياً على بناء تجربة فريدة لتغطية كافة الأخبار الرياضية والمباريات المحلية والعالمية فور حدوثها.</p>
-        <p style="color: #e11d48; font-weight: bold;">الموقع سوف يكون متاحاً قريباً جداً!</p>
+        <div class="badge">انتظرونا اليوم ⚽</div>
+        <h1>أهلاً بكم في أخبار الرياضة 24</h1>
+        <p>الموقع سيكون متاحاً خلال:</p>
         
         <!-- قسم العد التنازلي -->
         <div class="countdown-container">
             <div class="countdown-box">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">أيام</span>
-            </div>
-            <div class="countdown-box">
                 <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">ساعات</span>
+                <span class="countdown-label">ساعة</span>
             </div>
             <div class="countdown-box">
                 <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">دقائق</span>
+                <span class="countdown-label">دقيقة</span>
             </div>
             <div class="countdown-box">
                 <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">ثواني</span>
+                <span class="countdown-label">ثانية</span>
             </div>
         </div>
 
@@ -126,22 +120,19 @@
     </div>
 
     <script>
-        // ضبط تاريخ الافتتاح: اليوم 19 يوليو 2026 الساعة 7 مساءً (19:00) بالظبط
-        // الشهور في الجافا سكريبت تبدأ من 0 (يعني شهر 7 هو رقم 6 في الكود)
+        // موعد الإطلاق: اليوم 19 يوليو 2026 الساعة 7 مساءً (19:00)
         const launchDate = new Date(2026, 6, 19, 19, 0, 0).getTime();
 
         const countdownFunction = setInterval(function() {
             const now = new Date().getTime();
             const distance = launchDate - now;
 
-            // حساب الوقت المتبقي
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            // حساب الساعات والدقائق والثواني فقط
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // عرض النتيجة
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
@@ -149,7 +140,7 @@
             // عند انتهاء الوقت
             if (distance < 0) {
                 clearInterval(countdownFunction);
-                document.querySelector(".countdown-container").innerHTML = "<p style='color:#10b981; font-weight:bold; font-size:1.5rem;'>تم إطلاق الموقع بنجاح! 🎉</p>";
+                document.querySelector(".countdown-container").innerHTML = "<p style='color:#10b981; font-weight:bold; font-size:1.5rem;'>تم إطلاق الموقع الآن! 🎉</p>";
             }
         }, 1000);
     </script>
