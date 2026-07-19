@@ -5,197 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أخبار الرياضة 24</title>
     <style>
-        /* إعدادات الخط والألوان العامة */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* شريط التنقل العلوي */
-        header {
-            background-color: #1f1f1f;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid #ff4757;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff4757;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 15px;
-        }
-
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ff4757;
-        }
-
-        /* الحاوية الرئيسية للمحتوى */
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-
-        /* عنوان القسم */
-        .section-title {
-            font-size: 22px;
-            border-right: 4px solid #ff4757;
-            padding-right: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* شبكة الأخبار */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        /* كارت الخبر */
-        .news-card {
-            background-color: #1f1f1f;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .news-img-placeholder {
-            width: 100%;
-            height: 180px;
-            background-color: #2f3542;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #a4b0be;
-            font-size: 14px;
-        }
-
-        .news-content {
-            padding: 15px;
-        }
-
-        .news-tag {
-            background-color: #ff4757;
-            color: white;
-            font-size: 12px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .news-content h3 {
-            margin: 0 0 10px 0;
-            font-size: 18px;
-            line-height: 1.4;
-        }
-
-        .news-content p {
-            color: #a4b0be;
-            font-size: 14px;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* الفوتر (أسفل الصفحة) */
-        footer {
-            background-color: #1f1f1f;
-            text-align: center;
-            padding: 15px;
-            margin-top: 4px;
-            font-size: 14px;
-            color: #a4b0be;
-            border-top: 1px solid #2f3542;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #121212; color: #ffffff; margin: 0; padding: 0; }
+        header { background-color: #1f1f1f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #ff4757; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 24px; font-weight: bold; color: #ff4757; cursor: pointer; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 15px; }
+        nav ul li a { color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 500; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+        .section-title { font-size: 22px; border-right: 4px solid #ff4757; padding-right: 10px; margin-bottom: 20px; }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .news-card { background-color: #1f1f1f; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.3s; cursor: pointer; }
+        .news-card:hover { transform: translateY(-5px); }
+        .news-img { width: 100%; height: 200px; object-fit: cover; }
+        .news-content { padding: 15px; }
+        .news-tag { background-color: #ff4757; color: white; font-size: 12px; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        .news-content h3 { margin: 0 0 10px 0; font-size: 18px; line-height: 1.4; color: #fff; }
+        .news-content p { color: #a4b0be; font-size: 14px; margin: 0; line-height: 1.6; }
+        .news-details-page { display: none; background-color: #1f1f1f; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .back-btn { background-color: #ff4757; color: white; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; cursor: pointer; margin-bottom: 20px; font-weight: bold; }
+        .details-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
+        .details-title { font-size: 26px; margin-bottom: 15px; color: #ffffff; }
+        .details-text { font-size: 18px; line-height: 1.8; color: #dcdde1; }
+        footer { background-color: #1f1f1f; text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #2f3542; }
+        .footer-text { font-size: 14px; color: #a4b0be; margin: 5px; }
+        .designer-link { color: #ff4757; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي والأقسام -->
     <header>
-        <div class="logo">أخبار الرياضة 24</div>
+        <div class="logo" onclick="showMainPage()">أخبار الرياضة 24</div>
         <nav>
-            <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">الدوري المصري</a></li>
-                <li><a href="#">الكرة العالمية</a></li>
-                <li><a href="#">أنتقالات</a></li>
-            </ul>
-        </</nav>
+            <ul><li><a href="#" onclick="showMainPage()">الرئيسية</a></li></ul>
+        </nav>
     </header>
 
-    <!-- المحتوى الرئيسي للموقع -->
     <div class="container">
-        <h2 class="section-title">آخر الأخبار</h2>
-        
-        <div class="news-grid">
-            
-            <!-- خبر 1 -->
-            <div class="news-card">
-                <div class="news-img-placeholder">مساحة مخصصة لصورة الخبر</div>
-                <div class="news-content">
-                    <span class="news-tag">الكرة العالمية</span>
-                    <h3>انطلاق مباريات الجولة القادمة في دوري أبطال أوروبا وسط ترقب جماهيري كبير</h3>
-                    <p>تتجه أنظار عشاق كرة القدم الليلة إلى الملاعب الأوروبية لمتابعة قمم كروية نارية منتظرة بين عمالقة القارة العجوز...</p>
-                </div>
+        <div id="main-page">
+            <h2 class="section-title">آخر الأخبار والصفقات</h2>
+            <div class="news-grid">
+                <!-- الأخبار السابقة (1 إلى 7) -->
+                <script>
+                    const articles = [
+                        {id:1, tag:"الكرة المصرية", title:"رسمياً.. الزمالك يعلن احتراف حسام عبد المجيد"},
+                        {id:2, tag:"الكرة المصرية", title:"مهاجم مغربي جديد في الجزيرة.. سفيان بن جديدة يوقع للأهلي"},
+                        {id:3, tag:"كأس العالم 2026", title:"نهائي الأحلام.. ميسي ويامال يشعلان أسعار التذاكر"},
+                        {id:4, tag:"كأس العالم 2026", title:"إنجلترا تُقصي فرنسا ومبابي الهداف التاريخي"},
+                        {id:5, tag:"الميركاتو الأوروبي", title:"تشيلسي يحسم صفقة مورجان روجرز بـ 117 مليون"},
+                        {id:6, tag:"الميركاتو الأوروبي", title:"تحرك تركي لضم محمد صلاح"},
+                        {id:7, tag:"رياضات أخرى", title:"إلغاء سباقي الفورمولا 1 في البحرين والسعودية"},
+                        {id:8, tag:"الكرة العالمية", title:"ديوكوفيتش يعود للعرش.. أرقام قياسية جديدة في التنس"},
+                        {id:9, tag:"الكرة المصرية", title:"الأهلي بطلاً للسوبر الأفريقي بعد ملحمة أمام الزمالك"},
+                        {id:10, tag:"الميركاتو الأوروبي", title:"هالاند يقترب من الرحيل.. ريال مدريد في الصورة"}
+                    ];
+                    articles.forEach(art => {
+                        document.write(`
+                            <div class="news-card" onclick="openNews(${art.id})">
+                                <img class="news-img" src="https://picsum.photos/seed/${art.id}/500/300" alt="خبر">
+                                <div class="news-content">
+                                    <span class="news-tag">${art.tag}</span>
+                                    <h3>${art.title}</h3>
+                                    <p>اضغط لقراءة التفاصيل الكاملة...</p>
+                                </div>
+                            </div>
+                        `);
+                    });
+                </script>
             </div>
+        </div>
 
-            <!-- خبر 2 -->
-            <div class="news-card">
-                <div class="news-img-placeholder">مساحة مخصصة لصورة الخبر</div>
-                <div class="news-content">
-                    <span class="news-tag">الدوري المصري</span>
-                    <h3>استعدادات مكثفة للأندية المصرية لخوض منافسات الأسبوع الجديد من الدوري</h3>
-                    <p>دخلت الفرق في معسكرات مغلقة لرفع اللياقة البدنية وتجهيز الخطط الفنية وسط منافسة شرسة على المربع الذهبي وصدارة الترتيب...</p>
-                </div>
-            </div>
-
-            <!-- خبر 3 -->
-            <div class="news-card">
-                <div class="news-img-placeholder">مساحة مخصصة لصورة الخبر</div>
-                <div class="news-content">
-                    <span class="news-tag">سوق الانتقالات</span>
-                    <h3>تقارير: صفقة كبرى تقترب من الحسم في الميركاتو الصيفي الحالي</h3>
-                    <p>أشارت مصادر مطلعة إلى أن المفاوضات وصلت لمراحل متقدمة بين الناديين لتوقيع العقد الرسمي والإعلان عن الصفقة خلال ساعات...</p>
-                </div>
-            </div>
-
+        <div id="details-page" class="news-details-page">
+            <button class="back-btn" onclick="showMainPage()">← العودة للرئيسية</button>
+            <img id="details-img" class="details-img" src="" alt="">
+            <h1 id="details-title" class="details-title"></h1>
+            <div id="details-text" class="details-text"></div>
         </div>
     </div>
 
-    <!-- أسفل الصفحة -->
     <footer>
-        <p>جميع الحقوق محفوظة © أخبار الرياضة 24 | 2026</p>
+        <p class="footer-text">تصميم وتطوير: <span class="designer-link">عبدالرحمن منتصر ماهر</span></p>
+        <p class="footer-text">للتواصل: <a href="tel:0100126702" class="designer-link">0100126702</a></p>
+        <p class="footer-text">جميع الحقوق محفوظة © أخبار الرياضة 24 | 2026</p>
     </footer>
 
+    <script>
+        const newsData = {
+            1: {title: "رسمياً.. الزمالك يعلن احتراف حسام عبد المجيد في الدوري البلغاري", image: "https://picsum.photos/seed/1/800/400", text: "أعلن مجلس إدارة نادي الزمالك الموافقة على رحيل مدافع الفريق حسام عبد المجيد لصفوف لودوجوريتس البلغاري."},
+            2: {title: "مهاجم مغربي جديد في الجزيرة.. سفيان بن جديدة يوقع للأهلي 3 سنوات", image: "https://picsum.photos/seed/2/800/400", text: "تأكيدات بتوقيع سفيان بن جديدة للنادي الأهلي لتدعيم الخط الأمامي للمارد الأحمر."},
+            3: {title: "نهائي الأحلام.. ميسي ويامال يشعلان أسعار التذاكر", image: "https://picsum.photos/seed/3/800/400", text: "مواجهة الأجيال بين الأرجنتين وإسبانيا ترفع أسعار التذاكر لأرقام فلكية."},
+            4: {title: "إنجلترا تُقصي فرنسا ومبابي الهداف التاريخي", image: "https://picsum.photos/seed/4/800/400", text: "إنجلترا تطيح بفرنسا، ومبابي يدخل التاريخ رغم الخروج."},
+            5: {title: "تشيلسي يحسم صفقة مورجان روجرز", image: "https://picsum.photos/seed/5/800/400", text: "صفقة تاريخية لتشيلسي بقيمة 117 مليون إسترليني."},
+            6: {title: "تحرك تركي مفاجئ لضم محمد صلاح", image: "https://picsum.photos/seed/6/800/400", text: "بشكتاش يسعى لتمويل صفقة الفرعون المصري برعاية رجال أعمال."},
+            7: {title: "إلغاء سباقي فورمولا 1", image: "https://picsum.photos/seed/7/800/400", text: "إلغاء سباقات البحرين والسعودية بسبب الأوضاع الإقليمية."},
+            8: {title: "ديوكوفيتش يعود للعرش.. أرقام قياسية جديدة", image: "https://picsum.photos/seed/8/800/400", text: "حقق نوفاك ديوكوفيتش لقبه الـ 25 في الجراند سلام، معززاً رقمه القياسي كأعظم لاعب تنس في التاريخ بعد نهائي ماراثوني."},
+            9: {title: "الأهلي بطلاً للسوبر الأفريقي", image: "https://picsum.photos/seed/9/800/400", text: "توج النادي الأهلي بلقب السوبر الأفريقي بعد فوز درامي على الزمالك بضربات الجزاء الترجيحية في مباراة حبست الأنفاس."},
+            10: {title: "هالاند يقترب من الرحيل.. ريال مدريد في الصورة", image: "https://picsum.photos/seed/10/800/400", text: "أشارت تقارير إسبانية إلى وجود بند في عقد هالاند يسمح له بالرحيل، وريال مدريد يجهز عرضاً خرافياً لضمه الصيف القادم."}
+        };
+
+        function openNews(id) {
+            const item = newsData[id];
+            document.getElementById('details-img').src = item.image;
+            document.getElementById('details-title').innerText = item.title;
+            document.getElementById('details-text').innerHTML = item.text;
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('details-page').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        function showMainPage() {
+            document.getElementById('details-page').style.display = 'none';
+            document.getElementById('main-page').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
