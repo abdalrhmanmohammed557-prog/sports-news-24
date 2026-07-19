@@ -2,430 +2,87 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أخبار الرياضة 24 | تغطية شاملة للأخبار العالمية والمحلية</title>
+    <title>بوابة الرياضة 24 - تغطية شاملة</title>
     <style>
-        /* إعدادات الخطوط والألوان العامة */
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        
-        :root {
-            --primary-color: #e21b1b;
-            --secondary-color: #1a1a1a;
-            --bg-color: #f4f6f9;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --text-muted: #777777;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        /* الهيدر وشريط التنقل */
-        header {
-            background-color: var(--secondary-color);
-            color: #ffffff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            color: #ffffff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .logo span {
-            color: var(--primary-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-        }
-
-        nav ul li a {
-            color: #cccccc;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            color: #ffffff;
-            background-color: var(--primary-color);
-        }
-
-        /* محتوى الصفحة الرئيسي */
-        main {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            margin-bottom: 25px;
-            border-right: 5px solid var(--primary-color);
-            padding-right: 15px;
-        }
-
-        .section-header h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--secondary-color);
-        }
-
-        /* شبكة الأخبار */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .news-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .news-img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            background-color: #e1e1e1;
-        }
-
-        .news-content {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .news-tag {
-            align-self: flex-start;
-            background-color: rgba(226, 27, 27, 0.1);
-            color: var(--primary-color);
-            font-size: 12px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-        }
-
-        .news-content h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .news-content p {
-            color: var(--text-muted);
-            font-size: 14px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* صفحة تفاصيل الخبر */
-        #details-page {
-            display: none;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .btn-back {
-            background-color: var(--secondary-color);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-back:hover {
-            background-color: var(--primary-color);
-        }
-
-        .details-main-img {
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-
-        #details-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        #details-text {
-            font-size: 18px;
-            color: #444444;
-            text-align: justify;
-        }
-
-        /* الفوتر */
-        footer {
-            background-color: var(--secondary-color);
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            font-size: 14px;
-        }
-
-        /* الشاشات الصغيرة */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            #details-title {
-                font-size: 24px;
-            }
-        }
+        body { font-family: 'Cairo', sans-serif; background: #f4f4f4; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .news-item { padding: 25px; border-bottom: 2px solid #f0f0f0; cursor: pointer; transition: 0.4s; }
+        .news-item:hover { background: #fff8f8; border-right: 8px solid #e21b1b; }
+        #details-view { display: none; }
+        .back-btn { background: #222; color: #fff; padding: 12px 25px; border: none; cursor: pointer; border-radius: 8px; font-weight: bold; margin-bottom: 30px; }
+        h1 { color: #e21b1b; text-align: center; margin-bottom: 40px; }
+        .details-text { line-height: 2.4; font-size: 20px; color: #333; text-align: justify; padding: 10px; }
     </style>
 </head>
 <body>
+<div class="container">
+    <div id="main-view">
+        <h1>أهم التغطيات الرياضية الحصرية</h1>
+        <div id="news-list"></div>
+    </div>
+    <div id="details-view">
+        <button class="back-btn" onclick="goBack()">← العودة للرئيسية</button>
+        <h2 id="det-title" style="color: #e21b1b;"></h2>
+        <p id="det-text" class="details-text"></p>
+    </div>
+</div>
 
-    <!-- الهيدر ونظام التبويبات -->
-    <header>
-        <div class="header-container">
-            <a onclick="filterCategory('all')" class="logo">أخبار الرياضة <span>24</span></a>
-            <nav>
-                <ul>
-                    <li><a id="cat-all" class="active" onclick="filterCategory('all')">الرئيسية</a></li>
-                    <li><a id="cat-local" onclick="filterCategory('local')">أخبار محلية</a></li>
-                    <li><a id="cat-global" onclick="filterCategory('global')">أخبار عالمية</a></li>
-                    <li><a id="cat-others" onclick="filterCategory('others')">رياضات أخرى</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- المحتوى الفعلي -->
-    <main>
-        <!-- الصفحة الرئيسية وشبكة الأخبار -->
-        <div id="main-page">
-            <div class="section-header">
-                <h2 id="page-title">آخر الأخبار والصفقات</h2>
-            </div>
-            <div class="news-grid" id="news-container">
-                <!-- الـ JavaScript هيملى الأخبار هنا تلقائياً -->
-            </div>
-        </div>
-
-        <!-- صفحة تفاصيل الخبر -->
-        <div id="details-page">
-            <button class="btn-back" onclick="showMainPage()">← العودة للرئيسية</button>
-            <h1 id="details-title"></h1>
-            <img id="details-img" class="details-main-img" src="" alt="">
-            <div id="details-text"></div>
-        </div>
-    </main>
-
-    <!-- الفوتر -->
-    <footer>
-        <p>&copy; 2026 أخبار الرياضة 24 - جميع الحقوق محفوظة</p>
-    </footer>
-
-    <script>
-        // تم ربط كل صورة بالخبر الصحيح بناءً على خريطتك الدقيقة
-        const newsData = {
-            1: {
-                id: 1,
-                category: "local",
-                tag: "أخبار محلية",
-                title: "رسمياً.. الزمالك يعلن احتراف حسام عبد المجيد في الدوري البلغاري",
-                image: "صور (1).jpeg", // jpeg 1 حسام عبد المجيد
-                summary: "أعلن مجلس إدارة نادي الزمالك برئاسة الكابتن حسين لبيب الموافقة الرسمية على رحيل مدافع الفريق الأول حسام عبد المجيد الأوروبي...",
-                text: "أعلن مجلس إدارة نادي الزمالك برئاسة الكابتن حسين لبيب، بالتنسيق الكامل مع المدير الرياضي جون إدوارد، عن موافقته الرسمية النهائية على رحيل مدافع الفريق الأول لكرة القدم الشاب 'حسام عبد المجيد'، وذلك من أجل بدء تجربة احترافية أوروبية جديدة في صفوف نادي لودوجوريتس البلغاري الشهير.<br><br>وجاء هذا القرار المفصلي بعد استكمال كافة الإجراءات الإدارية المتبعة وتوقيع العقود، بالإضافة إلى تسوية الاتفاق المالي المناسب بين إدارة الناديين بما يضمن حقوق القلعة البيضاء الاستثمارية من الصفقة."
-            },
-            2: {
-                id: 2,
-                category: "local",
-                tag: "أخبار محلية",
-                title: "مهاجم مغربي جديد في الجزيرة.. سفيان بن جديدة يوقع للأهلي 3 سنوات رسمياً",
-                image: "صور (4).jpeg", // jpeg 4 سفيان بن جديدة
-                summary: "فجّر عباس، وكيل أعمال المهاجم المغربي سفيان بن جديدة لاعب فريق المغرب الفاسي، مفاجأة كبرى بإعلانه توقيع اللاعب رسمياً للأهلي...",
-                text: "فجّر عباس، وكيل أعمال المهاجم المغربي المتألق سفيان بن جديدة لاعب فريق المغرب الفاسي، مفاجأة كبرى من العيار الثقيل بملف الانتقالات، بعدما أعلن رسمياً عن توقيع اللاعب على عقود انتقاله إلى صفوف النادي الأهلي المصري بعقد رسمي طويل الأمد يمتد لـ 3 مواسم كروية قادمة لتدعيم خط الهجوم."
-            },
-            3: {
-                id: 3,
-                category: "global",
-                tag: "أخبار عالمية",
-                title: "نهائي الأحلام يقترب.. ميسي ويامال يشعلان أسعار التذاكر و'فيفا' يتدخل لحماية اللاعبين",
-                image: "صور (2).jpeg", // jpeg 2 نهائي كاس العالم
-                summary: "مع اقتراب نهائي مونديال 2026، اشتعلت أسواق التذاكر لمشاهدة مواجهة الأجيال بين الأرجنتين وإسبانيا بقيادة ميسي ويامال...",
-                text: "مع الاقتراب المثير للمحطة الأخيرة والنهائية لمونديال 2026 التاريخي، اشتعلت أسواق التذاكر حول العالم بشكل غير مسبوق لمشاهدة مواجهة الأجيال الكبرى المرتقبة بين الأرجنتين بقيادة الأسطورة ليونيل ميسي، وإسبانيا بقيادة النجم الشاب الواعد لامين يامال."
-            },
-            4: {
-                id: 4,
-                category: "global",
-                tag: "أخبار عالمية",
-                title: "إنجلترا تُقصي فرنسا بسداسية جنونية (6 - 4) ومبابي يصبح الهداف التاريخي للمونديال",
-                image: "صور (7).jpeg", // jpeg 7 انجلترا وفرنسا
-                summary: "في كبرى مفاجآت المونديال، نجح المنتخب الإنجليزي في الإطاحة بالديوك الفرنسية بعد مباراة تاريخية مجنونة انتهت بنتيجة (6 - 4)...",
-                text: "في واحدة من أكبر وأعنف المفاجآت المدوية بالأدوار الإقصائية لبطولة كأس العالم، نجح المنتخب الإنجليزي في إخماد انتفاضة الديوك الفرنسية تماماً والإطاحة بهم خارج البطولة بعد مباراة ملحمية وتاريخية مجنونة انتهت بنتيجة عريضة صدمت جماهير باريس والعالم بواقع (6 - 4)."
-            },
-            5: {
-                id: 5,
-                category: "global",
-                tag: "أخبار عالمية",
-                title: "زلزال في الميركاتو الإنجليزي.. تشيلسي يحسم صفقة قياسية لضم مورجان روجرز بـ 117 مليون إسترليني",
-                image: "صور (5).jpeg", // jpeg 5 روجرز وتشيلسي
-                summary: "أشعل تشيلسي الميركاتو الصيفي بعد اتفاقه النهائي لضم الجناح الدولي المتألق مورجان روجرز من أستون فيلا بصفقة قياسية...",
-                text: "أشعل نادي تشيلسي الإنجليزي سوق الانتقالات الصيفية الحالية بعد توصله إلى اتفاق نهائي وصادم مع إدارة نادي أستون فيلا للتعاقد مع الجناح واللاعب الدولي الإنجليزي المتألق 'مورجان روجرز'."
-            },
-            6: {
-                id: 6,
-                category: "global",
-                tag: "أخبار عالمية",
-                title: "تحرك تركي مفاجئ لضم محمد صلاح.. بشكتاش يعثر على 'الراعي المالي' لحسم الصفقة الهامّة",
-                image: "صور.jpeg", // jpeg صور (IMG صلاح)
-                summary: "كشفت تقارير صحفية عن تطورات مدوية بشأن مستقبل محمد صلاح؛ حيث نجح نادي بشكتاش التركي في توفير الدعم المالي لحسم الصفقة...",
-                text: "كشفت تقارير صحفية رياضية موثوقة ومقربة من الملاعب الأوروبية عن تطورات مدوية وسريعة بشأن مستقبل قائد المنتخب الوطني المصري ونجم ليفربول الأسطوري محمد صلاح؛ حيث نجحت إدارة نادي بشكتاش التركي العريق في إحداث تحرك مفاجئ وجاد لضم اللاعب."
-            },
-            7: {
-                id: 7,
-                category: "others",
-                tag: "رياضات أخرى",
-                title: "بسبب الأوضاع الإقليمية.. 'فيا' يعلن رسمياً إلغاء سباقي فورمولا 1 في البحرين والسعودية",
-                image: "صور (6).jpeg", // jpeg 6 فورمولا
-                summary: "أعلن الاتحاد الدولي للسيارات (FIA) رسمياً عن إلغاء سباقي جائزة البحرين والسعودية الكبرى للفورمولا 1 بسبب الأوضاع بالمنطقة...",
-                text: "أعلن الاتحاد الدولي للسيارات (FIA) ببيان رسمي عاجل، عن إلغاء سباقي جائزة البحرين الكبرى وجائزة السعودية الكبرى للسيارات بشكل نهائي."
-            },
-            8: {
-                id: 8,
-                category: "others",
-                tag: "رياضات أخرى",
-                title: "ديوكوفيتش يعود للعرش من جديد ويكتب التاريخ.. أرقام قياسية خيالية في عالم التنس",
-                image: "صور (3).jpeg", // jpeg 3 دياكوفيتش
-                summary: "حقق نوفاك ديوكوفيتش لقبه الـ 25 في الجراند سلام، معززاً رقمه القياسي كأعظم لاعب تنس في التاريخ بعد نهائي ماراثوني شديد الإثارة...",
-                text: "حقق الأسطورة الصربي الحية نوفاك ديوكوفيتش إنجازاً إعجازياً جديداً يضاف إلى مسيرته المرصعة بالذهب والبطولات، وذلك بعد تربعه مجدداً على عرش التنس العالمي وحصده للقب الغالي رقم 25 في بطولات الجراند سلام الأربع الكبرى."
-            },
-            9: {
-                id: 9,
-                category: "local",
-                tag: "أخبار محلية",
-                title: "ميركاتو الأهلي يشتعل.. مفاوضات مكثفة مع المهاجم الفلسطيني عمر فرج وبيرسي تاو يحسم مصيره بالتجديد",
-                image: "png (1) شبكة.png", // png(1) الاهلي
-                summary: "يتحرك النادي الأهلي بقوة لتدعيم صفوفه بالميركاتو الصيفي، حيث يقود مفاوضات مع الفلسطيني عمر فرج ويقترب من تمديد عقد بيرسي تاو...",
-                text: "تشهد أروقة النادي الأهلي ثورة كبيرة وتغييرات واسعة في ملف الصفقات والميركاتو الصيفي الحالي بناءً على الرؤية الفنية، حيث يسعى المارد الأحمر بقوة لتدعيم مراكز الهجوم."
-            }
-        };
-
-        function renderNews(category = 'all') {
-            const container = document.getElementById('news-container');
-            container.innerHTML = '';
-            
-            Object.values(newsData).forEach(art => {
-                if (category === 'all' || art.category === category) {
-                    const safeImageSrc = encodeURIComponent(art.image).replace(/%20/g, ' ');
-                    container.innerHTML += `
-                        <div class="news-card" onclick="openNews(${art.id})">
-                            <img class="news-img" src="${safeImageSrc}" alt="${art.title}">
-                            <div class="news-content">
-                                <span class="news-tag">${art.tag}</span>
-                                <h3>${art.title}</h3>
-                                <p>${art.summary}</p>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
+<script>
+    const newsData = [
+        {
+            id: 1, 
+            title: "موقف محمد صلاح الغامض في ليفربول", 
+            details: "لا يزال الغموض يكتنف مستقبل النجم المصري محمد صلاح مع نادي ليفربول، حيث يرفض وكيله رامي عباس حتى اللحظة الإفصاح عن الوجهة القادمة. يشدد عباس في تصريحاته الأخيرة على أن صلاح لم يتخذ قراراً نهائياً بشأن النادي الذي سيمثله في موسم 2026-2027، مؤكداً أن المفاوضات لا تزال في مراحلها الأولية. تترقب جماهير الكرة العالمية، وخاصة المصرية، أي إعلان رسمي قد يصدر خلال الأيام القليلة القادمة لتوضيح خارطة طريق الفرعون المصري. تتردد أنباء عن عروض ضخمة، لكن القرار النهائي يعتمد على رؤية صلاح الرياضية للمستقبل ومشاركته في البطولات الكبرى. يسعى اللاعب حالياً لضمان الانتقال لمشروع رياضي طموح يناسب إمكانياته الفنية العالية، وهو ما يجعل وكيله يتعامل بذكاء شديد مع كل العروض المقدمة لضمان أفضل خيار ممكن لمسيرته الأسطورية."
+        },
+        {
+            id: 2, 
+            title: "الأهلي المصري يعزز هجومه بصفقات نارية", 
+            details: "شهدت الساعات الماضية تحركات مكثفة من مجلس إدارة النادي الأهلي لحسم ملفات الهجوم قبل بداية معسكر الإعداد للموسم الجديد. أعلن النادي رسمياً عن ضم الثنائي أقطاي عبد الله وعلي محمود من صفوف نادي إنبي، في إطار خطة النادي لتدعيم القوام الأساسي بعناصر شابة وموهوبة. لم تتوقف الصفقات عند هذا الحد، حيث نجح مسؤولو القلعة الحمراء في التوصل لاتفاق نهائي لضم المهاجم المغربي سفيان بنجديدة من المغرب الفاسي، ليكون إضافة قوية لخط الهجوم. وفي سياق متصل، تكثف الإدارة مفاوضاتها لضم المهاجم الجزائري منصف بقرار من دينامو زغرب، حيث تم تقديم عرض رسمي بقيمة 3 ملايين يورو، وما زالت المفاوضات قائمة للحصول على موافقة اللاعب النهائية. يأتي هذا التدعيم الهجومي تلبيةً لرغبة المدير الفني مارسيل كولر في خلق تنافسية عالية، مع استمرار الاهتمام بعودة المهاجم الكونغولي والتر بواليا أو خيارات أخرى مثل موليكا لتأمين العمق الهجومي في البطولات القارية."
+        },
+        {
+            id: 3, 
+            title: "الزمالك يواجه تحديات إدارية صعبة في الميركاتو", 
+            details: "يواجه نادي الزمالك تحديات كبيرة في سوق الانتقالات الحالي، حيث تظل عقوبة إيقاف القيد سارية بعد رفض المحكمة الرياضية الدولية (كاس) الطلب المستعجل الذي قدمه النادي. يعمل مجلس الإدارة بشكل متواصل على تسوية المستحقات المالية المتأخرة لعدد من اللاعبين السابقين والمدربين، وهي الخطوة الوحيدة لإنهاء أزمة القيد ورفع الحظر. وعلى صعيد آخر، وافق النادي رسمياً على احتراف المدافع الواعد حسام عبد المجيد في صفوف نادي لودوجوريتس البلغاري، في تجربة احترافية جديدة تعكس تطور اللاعب. تحاول إدارة النادي حالياً إعادة ترتيب البيت من الداخل، والبحث عن حلول قانونية لجدولة الديون، خاصة وأن الفريق يحتاج لتدعيمات عاجلة في مراكز الدفاع ووسط الملعب للمنافسة في الموسم القادم. تضع الجماهير آمالها على نجاح الإدارة في تجاوز هذه العقبات الإدارية في أسرع وقت ممكن، لتفادي تكرار سيناريوهات الموسم الماضي التي أثرت على استقرار الفريق فنياً وإدارياً."
+        },
+        {
+            id: 4, 
+            title: "بيراميدز يبرم صفقات دفاعية ويترقب حمدي فتحي", 
+            details: "واصل نادي بيراميدز تحركاته القوية في الميركاتو الصيفي لتعزيز خطوطه الدفاعية استعداداً للمنافسات المحلية والقارية. حسم النادي تعاقده مع المدافع إياد العسقلاني القادم من نادي روستوف الروسي، كما نجح في ضم أحمد حجازي في صفقة انتقال حر بعد رحيله عن نادي نيوم السعودي. يأتي هذا التحرك الدفاعي لسد الثغرات التي عانى منها الفريق في الموسم الماضي، حيث يسعى النادي لبناء دفاع حديدي قادر على مواجهة أقوى الفرق. في الوقت نفسه، يترقب مسؤولو بيراميدز الموقف النهائي لنجم وسط المنتخب المصري، حمدي فتحي، الذي يلعب حالياً في صفوف الوكرة القطري، حيث لا تزال المفاوضات جارية بين الطرفين دون التوصل لاتفاق نهائي. كما يكثف الفريق جهوده للبحث عن مهاجم أجنبي من العيار الثقيل لتعويض رحيل الكونغولي فيستون ماييلي، الذي انتهى عقده مع النادي. يهدف بيراميدز من خلال هذه التعاقدات إلى بناء فريق بطل قادر على المنافسة على كافة الألقاب، مستغلاً الإمكانيات المالية الضخمة المتاحة لديه."
+        },
+        {
+            id: 5, 
+            title: "تغيرات جوهرية في المشهد الأوروبي", 
+            details: "يشهد سوق الانتقالات الأوروبي تحركات واسعة، حيث أعلن نادي تشيلسي عن صفقة قياسية بضم مورجان روجرز من أستون فيلا مقابل 117 مليون إسترليني، في عقد يمتد لعام 2032. وعلى الجانب الآخر، قرر ريال مدريد رسمياً الانسحاب من صفقة رودري، مفضلاً التركيز على مواهبه الشابة الحالية بدلاً من إنفاق ميزانيات ضخمة في خط الوسط. في إنجلترا، يسعى توتنهام بجدية لضم الجناح البرازيلي سافينيو بتوصية من المدرب دي زيربي، بينما يراقب ميلان وضع فيل فودين مع تعقيد الصفقة مالياً. أما في إسبانيا، فقد منح برشلونة مهلة للمهاجم جوليان ألفاريز حتى نهاية يوليو لحسم موقفه، في حين رفض أتلتيكو مدريد بيع اللاعب جملة وتفصيلاً. كما شهد الميركاتو انتقالات لافتة مثل انتقال ترينكاو إلى أهلي جدة، وعودة أوباميانج للدوري الإسباني عبر بوابة ديبورتيفو لاكورونا، مع استمرار أرسنال في محاولاته لضم كريستوس تزوليس لتعويض رحيل نجومه. تعكس هذه التحركات رغبة الأندية الكبرى في إعادة بناء صفوفها وتأمين احتياجاتها الفنية قبل انطلاق الموسم الأوروبي المشتعل."
+        },
+        {
+            id: 6, 
+            title: "ختام مونديال 2026 وتغييرات فنية عالمية", 
+            details: "شهدت ختام منافسات كأس العالم 2026 أحداثاً تاريخية ستظل محفورة في ذاكرة عشاق كرة القدم لفترة طويلة. نجح المنتخب الإنجليزي في تحقيق الميدالية البرونزية بعد مواجهة درامية ومثيرة انتهت بفوزهم على المنتخب الفرنسي بنتيجة 6-4، في مباراة شهدت غزارة تهديفية غير مسبوقة. وفي أعقاب البطولة، أعلن الاتحاد الفرنسي لكرة القدم رسمياً رحيل المدير الفني ديدييه ديشامب، ليضع حداً لحقبة ذهبية مليئة بالبطولات والإنجازات التي حققها مع الديوك. تترقب الجماهير العالمية بشغف المباراة النهائية الكبرى التي تجمع بين المنتخبين الأرجنتيني والإسباني، وهي مواجهة طال انتظارها لتحديد بطل العالم الجديد في نسخة استثنائية. البطولة بشكل عام نجحت في تسليط الضوء على جيل جديد من المواهب الصاعدة، وأثبتت أن التطور التكتيكي في كرة القدم مستمر بلا هوادة. مع إسدال الستار على هذا المونديال، تستعد المنتخبات والاتحادات الوطنية لتقييم تجاربها وتحديد مساراتها الفنية القادمة، خاصة مع توفر وقت كافٍ للأندية لاستعادة لاعبيها قبل بداية الدوريات العالمية في قاراتها."
         }
+    ];
 
-        function filterCategory(category) {
-            showMainPage();
-            const titles = { all: "آخر الأخبار والصفقات", local: "أخبار محلية", global: "أخبار عالمية", others: "رياضات أخرى" };
-            document.getElementById('page-title').innerText = titles[category];
+    function renderList() {
+        const list = document.getElementById('news-list');
+        newsData.forEach(n => {
+            list.innerHTML += `<div class="news-item" onclick="showDetails(${n.id})"><h3>${n.title}</h3></div>`;
+        });
+    }
 
-            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
-            const activeId = category === 'all' ? 'cat-all' : category === 'local' ? 'cat-local' : category === 'global' ? 'cat-global' : 'cat-others';
-            document.getElementById(activeId).classList.add('active');
+    function showDetails(id) {
+        const news = newsData.find(n => n.id === id);
+        document.getElementById('det-title').innerText = news.title;
+        document.getElementById('det-text').innerText = news.details;
+        document.getElementById('main-view').style.display = 'none';
+        document.getElementById('details-view').style.display = 'block';
+        window.scrollTo(0,0);
+    }
 
-            renderNews(category);
-        }
+    function goBack() {
+        document.getElementById('main-view').style.display = 'block';
+        document.getElementById('details-view').style.display = 'none';
+    }
 
-        function openNews(id) {
-            const item = newsData[id];
-            document.getElementById('details-img').src = encodeURIComponent(item.image).replace(/%20/g, ' ');
-            document.getElementById('details-title').innerText = item.title;
-            document.getElementById('details-text').innerHTML = item.text;
-            
-            document.getElementById('main-page').style.display = 'none';
-            document.getElementById('details-page').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        function showMainPage() {
-            document.getElementById('details-page').style.display = 'none';
-            document.getElementById('main-page').style.display = 'block';
-        }
-
-        renderNews('all');
-    </script>
+    renderList();
+</script>
 </body>
 </html>
