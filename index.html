@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أخبار الرياضة 24 | التغطية الشاملة والتقويم الرياضي</title>
+  <title>أخبار الرياضة 24 | البث الحي والترتيب الشامل</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -173,7 +173,6 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
     .ticker-title {
@@ -230,42 +229,6 @@
       color: var(--text-main);
     }
 
-    .news-title-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .news-title-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 16px 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-
-    .news-title-card:hover {
-      border-color: var(--primary);
-      transform: translateX(-4px);
-    }
-
-    .news-title-card h3 {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .news-title-card span {
-      font-size: 11px;
-      color: var(--primary);
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
     .widget-box {
       background: var(--card-bg);
       border-radius: 12px;
@@ -275,65 +238,80 @@
       margin-bottom: 20px;
     }
 
-    .match-list { display: flex; flex-direction: column; gap: 10px; }
-
-    .match-item {
-      background: var(--bg-dark);
+    /* صندوق المباريات الحية مثل يلا كورة */
+    .match-center-box {
+      background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 12px;
-      cursor: pointer;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
     }
-    .match-item:hover { border-color: var(--primary); }
-
-    .league-title {
-      font-size: 11px;
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .match-teams {
+    
+    .match-center-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--text-main);
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--primary);
     }
 
-    .match-score.live {
-      background: var(--card-bg);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      color: #10b981;
+    .live-match-card {
+      background: var(--bg-dark);
       border: 1px solid var(--card-border);
-      animation: pulse-live 1.5s infinite;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .live-match-card:hover { border-color: var(--primary); }
+
+    .match-teams-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 14px;
     }
 
-    @keyframes pulse-live {
-      0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }
-    }
+    .team-name { width: 35%; text-align: center; }
+    .team-name.right { text-align: right; }
+    .team-name.left { text-align: left; }
 
-    .match-details-btn {
-      margin-top: 6px;
-      text-align: center;
+    .match-center-score {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #10b981;
+      font-weight: 900;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .match-status-badge {
       font-size: 10px;
       color: var(--text-muted);
     }
+    .match-status-badge.live { color: #10b981; animation: pulse-live 1.5s infinite; }
 
-    .match-details-view {
+    @keyframes pulse-live { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    /* تفاصيل Match Center الموسعة */
+    .match-details-modal {
       background: var(--bg-dark);
       border: 1px solid var(--card-border);
       border-radius: 10px;
       padding: 15px;
       display: none;
+      margin-top: 10px;
     }
-    .match-details-view.active { display: block; }
+    .match-details-modal.active { display: block; }
     
     .back-btn {
       background: var(--primary);
@@ -344,98 +322,59 @@
       font-family: 'Tajawal', sans-serif;
       font-weight: bold;
       cursor: pointer;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 11px;
     }
 
-    .match-tabs {
+    .m-tabs {
       display: flex;
-      gap: 4px;
-      margin-bottom: 10px;
+      gap: 6px;
       border-bottom: 1px solid var(--card-border);
-      padding-bottom: 6px;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
     }
-    .m-tab {
+    .m-tab-btn {
       background: transparent;
       border: none;
       color: var(--text-muted);
       font-family: 'Tajawal', sans-serif;
       font-weight: bold;
-      font-size: 11px;
+      font-size: 12px;
       cursor: pointer;
-      padding: 3px 6px;
-      border-radius: 4px;
+      padding: 4px 10px;
+      border-radius: 6px;
     }
-    .m-tab.active { background: rgba(230,0,0,0.12); color: var(--primary); }
-    .m-tab-content { display: none; font-size: 12px; line-height: 1.5; color: var(--text-main); }
-    .m-tab-content.active { display: block; }
+    .m-tab-btn.active { background: rgba(230,0,0,0.12); color: var(--primary); }
+    .m-tab-body { display: none; font-size: 12px; line-height: 1.6; }
+    .m-tab-body.active { display: block; }
 
-    .article-view {
+    /* جداول الترتيب والهدّافين */
+    .league-section-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 25px;
-      display: none;
+      padding: 20px;
+      margin-bottom: 25px;
     }
-    .article-view.active { display: block; }
 
-    .article-top-actions {
+    .league-tabs {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 8px;
       margin-bottom: 15px;
+      flex-wrap: wrap;
     }
-
-    .reading-mode-btn {
+    .l-tab {
       background: var(--bg-dark);
       border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .comments-section {
-      margin-top: 30px;
-      border-top: 1px solid var(--card-border);
-      padding-top: 20px;
-    }
-    .comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-    .comment-input, .comment-textarea {
-      background: var(--bg-dark);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      padding: 10px;
-      border-radius: 8px;
-      font-family: 'Tajawal', sans-serif;
-      font-size: 13px;
-    }
-    .comment-textarea { height: 80px; resize: none; }
-    .submit-comment-btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
+      color: var(--text-muted);
       padding: 8px 16px;
-      border-radius: 6px;
+      border-radius: 8px;
       font-family: 'Tajawal', sans-serif;
       font-weight: bold;
-      font-size: 12px;
+      font-size: 13px;
       cursor: pointer;
-      align-self: flex-start;
     }
-    .comment-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--card-border);
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .comment-author { font-weight: bold; font-size: 12px; color: var(--primary); margin-bottom: 4px; }
-    .comment-text { font-size: 12px; color: var(--text-main); }
+    .l-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
 
     .standings-table {
       width: 100%;
@@ -444,30 +383,54 @@
       margin-top: 10px;
     }
     .standings-table th, .standings-table td {
-      padding: 10px;
+      padding: 10px 8px;
       text-align: center;
       border-bottom: 1px solid var(--card-border);
     }
     .standings-table th { color: var(--primary); font-weight: 800; background: var(--bg-dark); }
     .standings-table td:nth-child(2) { text-align: right; }
 
-    /* تصميم التقويم السنوي المتفاعل */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    @media(max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } }
+
+    .stats-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .stats-box h5 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 4px;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      padding: 5px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.05);
+    }
+
+    /* التقويم السنوي */
     .calendar-container {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
     }
     .calendar-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
-    }
-    .calendar-header h3 {
-      font-size: 18px;
-      color: var(--text-main);
     }
     .cal-nav-btn {
       background: var(--bg-dark);
@@ -487,12 +450,7 @@
       gap: 6px;
       text-align: center;
     }
-    .cal-day-name {
-      font-size: 12px;
-      color: var(--primary);
-      font-weight: 800;
-      padding: 8px 0;
-    }
+    .cal-day-name { font-size: 12px; color: var(--primary); font-weight: 800; padding: 8px 0; }
     .cal-day {
       background: var(--bg-dark);
       border: 1px solid var(--card-border);
@@ -508,24 +466,8 @@
     }
     .cal-day.empty { background: transparent; border: none; cursor: default; }
     .cal-day:hover:not(.empty) { border-color: var(--primary); }
-    .cal-day.has-match {
-      background: rgba(230, 0, 0, 0.08);
-      border-color: var(--primary);
-      font-weight: bold;
-      color: var(--primary);
-    }
-    .match-dot {
-      font-size: 9px;
-      margin-top: 2px;
-      color: var(--text-muted);
-    }
-
-    .about-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 25px; }
-    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 15px; }
-    .about-item { background: var(--bg-dark); border: 1px solid var(--card-border); padding: 18px; border-radius: 10px; }
-    .about-item i { font-size: 22px; color: var(--primary); margin-bottom: 8px; }
-    .about-item h4 { font-size: 15px; margin-bottom: 5px; color: var(--text-main); }
-    .about-item p { font-size: 13px; color: var(--text-muted); }
+    .cal-day.has-match { background: rgba(230, 0, 0, 0.08); border-color: var(--primary); font-weight: bold; color: var(--primary); }
+    .match-dot { font-size: 9px; margin-top: 2px; color: var(--text-muted); }
 
     .tab-content { display: none; }
     .tab-content.active { display: block; }
@@ -553,14 +495,9 @@
       
       <div class="header-actions">
         <div class="search-box">
-          <input type="text" class="search-input" id="search-box" placeholder="ابحث عن خبر..." onkeyup="filterSearch()">
+          <input type="text" class="search-input" id="search-box" placeholder="ابحث في الدوريات والمباريات..." onkeyup="filterSearch()">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        
-        <button class="action-btn" onclick="toggleNotifications()" id="notif-btn" title="تفعيل الإشعارات">
-          <i class="fa-solid fa-bell"></i>
-        </button>
-
         <button class="action-btn" onclick="toggleTheme()" id="theme-btn" title="تغيير المظهر">
           <i class="fa-solid fa-moon" id="theme-icon"></i>
         </button>
@@ -570,129 +507,84 @@
     <nav>
       <div class="nav-container">
         <a class="nav-link active" onclick="switchTab('home', event)"><i class="fa-solid fa-house"></i> الرئيسية</a>
-        <a class="nav-link" onclick="switchTab('standings', event)"><i class="fa-solid fa-list-ol"></i> ترتيب الدوريات</a>
-        <a class="nav-link" onclick="switchTab('calendar', event)"><i class="fa-solid fa-calendar-days"></i> التقويم والمواعيد (2026)</a>
-        <a class="nav-link" onclick="switchTab('about', event)"><i class="fa-solid fa-circle-info"></i> حول</a>
+        <a class="nav-link" onclick="switchTab('standings', event)"><i class="fa-solid fa-list-ol"></i> الترتيب والهدافين</a>
+        <a class="nav-link" onclick="switchTab('calendar', event)"><i class="fa-solid fa-calendar-days"></i> التقويم الرياضي</a>
       </div>
     </nav>
   </header>
 
   <div class="ticker-wrap">
-    <div class="ticker-title">
-      <i class="fa-solid fa-bolt"></i> عاجل
-    </div>
+    <div class="ticker-title"><i class="fa-solid fa-bolt"></i> عاجل</div>
     <div class="ticker-content-container">
       <div class="ticker-content">
-        مواعيد انطلاق الدوريات والمنتخبات متاحة الآن في التقويم • إعلان جدول الدوريات الكبرى • الأهلي يكتسح النصر ودياً • يورجن كلوب مديراً فنياً لألمانيا
+        تحديث جداول ترتيب الدوريات والهدافين وصانعي الألعاب بشكل كامل • انطلاق منافسات الموسم الجديد 2026/2027 • متابعة حية لجميع المباريات عبر مركز المباريات
       </div>
     </div>
   </div>
 
-  <!-- صفحة تفاصيل الخبر -->
-  <div id="article-page" class="main-layout" style="display: none;">
-    <main style="grid-column: 1 / -1;">
-      <div class="article-view active" id="article-container-box">
-        <div class="article-top-actions">
-          <button class="back-btn" onclick="hideArticle()"><i class="fa-solid fa-arrow-right"></i> العودة للرئيسية</button>
-          <button class="reading-mode-btn" onclick="toggleReadingMode()"><i class="fa-solid fa-book-open"></i> وضع القراءة</button>
-        </div>
-        <h2 id="art-title" style="font-size: 20px; color: var(--text-main); margin-bottom: 12px; font-weight: 900;"></h2>
-        <div style="font-size: 11px; color: var(--primary); margin-bottom: 18px;"><i class="fa-solid fa-clock"></i> <span id="art-date"></span> | تغطية خاصة</div>
-        <p id="art-body" style="font-size: 14px; color: var(--text-muted); line-height: 2;"></p>
-
-        <div class="comments-section">
-          <h3 style="font-size: 15px; margin-bottom: 15px; color: var(--text-main);"><i class="fa-solid fa-comments"></i> التعليقات والمناقشات</h3>
-          <div class="comment-form">
-            <input type="text" id="comment-name" class="comment-input" placeholder="اسمك الكريم...">
-            <textarea id="comment-text" class="comment-textarea" placeholder="أضف تعليقك الرياضي هنا..."></textarea>
-            <button class="submit-comment-btn" onclick="postComment()">نشر التعليق</button>
-          </div>
-          <div id="comments-list">
-            <div class="comment-card">
-              <div class="comment-author">أحمد المصري</div>
-              <div class="comment-text">موقع احترافي والتقويم الجديد رائع جداً لتبادل المواعيد!</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- المحتوى الرئيسي -->
   <div id="main-site-content">
+    <!-- الرئيسية -->
     <div id="home-tab" class="tab-content active">
       <div class="main-layout">
         <main>
-          <div class="section-header">
-            <i class="fa-solid fa-newspaper" style="color: var(--primary);"></i>
-            أحدث عناوين الأخبار الرياضية
+          <div class="section-header"><i class="fa-solid fa-newspaper" style="color: var(--primary);"></i> أحدث الأخبار الرياضية</div>
+          <div class="widget-box">
+            <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--text-main);">انطلاق جدول مباريات الموسم الكروي الجديد 2026/2027</h3>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">تم تحديث جميع جداول الترتيب الرسمية، وإحصائيات اللاعبين والهدافين في الدوريات الكبرى (المصري، الإنجليزي، الإسباني، السعودي) بشكل تفصيلي يتيح لك متابعة كل صغيرة وكبيرة.</p>
           </div>
-
-          <div class="news-title-list" id="home-news-container">
-            <div class="news-title-card" onclick="openArticle('إعلان مواعيد الجولات الرسمية لانطلاق الدوريات الكبرى لموسم 2026/2027', '24 يوليو 2026', 'أعلنت الروابط المنظمة للدوريات الأوروبية والعربية الكبرى عن الجداول الرسمية ومواعيد انطلاق المباريات، وسط ترقب واسع من الجماهير في جميع أنحاء العالم لجدول المواجهات النارية مع بداية شهر أغسطس المقبل.')">
-              <h3>إعلان مواعيد الجولات الرسمية لانطلاق الدوريات الكبرى لموسم 2026/2027</h3>
-              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
-            </div>
-
-            <div class="news-title-card" onclick="openArticle('الزمالك يُعلن إنهاء ملفات الرخصة الأفريقية قبل انتهاء مهلة الكاف', '24 يوليو 2026', 'كثفت إدارة نادي الزمالك جهودها وحسمت أبرز الملفات المالية العالقة للحصول على الرخصة الأفريقية، وذلك قبل ساعات من انتهاء المهلة النهائية التي حددها الاتحاد الأفريقي لكرة القدم.')">
-              <h3>الزمالك يُعلن إنهاء ملفات "الرخصة الأفريقية" قبل انتهاء مهلة الكاف</h3>
-              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
-            </div>
-
-            <div class="news-title-card" onclick="openArticle('الأهلي يكتسح النصر بخماسية ودية في أول بصمة للمدرب الحسين عموتة', '24 يوليو 2026', 'حقق الفريق الأول لكرة القدم بنادي الأهلي فوزاً عريضاً بنتيجة 5-1 على فريق النصر في أولى مبارياته الودية التحضيرية تحت قيادة المدير الفني الجديد الحسين عموتة.')">
-              <h3>الأهلي يكتسح النصر بخماسية ودية في أول بصمة للمدرب الحسين عموتة</h3>
-              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
-            </div>
-
-            <div class="news-title-card" onclick="openArticle('رسمياً.. يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030', '24 يوليو 2026', 'أعلن الاتحاد الألماني لكرة القدم رسمياً تعيين المدرب المخضرم يورجن كلوب مديراً فنياً للمنتخب الأول بعقد يمتد حتى عام 2030 لإعادة هيكلة الماكينات الألمانية.')">
-              <h3>رسمياً.. يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030</h3>
-              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
-            </div>
+          <div class="widget-box">
+            <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--text-main);">تحديثات نظام البث المباشر (مثل يلا كورة)</h3>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.8;">اضغط على أي مباراة في مركز المباريات المجاورة لتظهر لك تفاصيل المواجهة، التشكيل، وإحصائيات الاستحواذ والتسديدات وأحداث المباراة لحظة بلحظة.</p>
           </div>
         </main>
 
         <aside>
-          <div class="widget-box">
-            <div class="section-header" style="font-size: 15px;">
-              <i class="fa-solid fa-circle-dot" style="color: #10b981;"></i>
-              المباريات المباشرة الآن (Live)
+          <div class="match-center-box">
+            <div class="match-center-header">
+              <span><i class="fa-solid fa-satellite-dish"></i> مركز المباريات الحية (Live)</span>
+              <span style="font-size: 11px; color: #10b981;">محدث فورياً</span>
             </div>
 
-            <div id="match-details-view" class="match-details-view">
-              <button class="back-btn" onclick="hideMatchDetails()"><i class="fa-solid fa-arrow-right"></i> القائمة</button>
-              <h3 id="det-match-title" style="color: var(--text-main); font-size: 14px; margin-bottom: 5px;"></h3>
-              <p id="det-match-status" style="font-size: 12px; color: #10b981; margin-bottom: 10px; font-weight: bold;"></p>
+            <!-- محتوى تفاصيل المباراة الموسعة -->
+            <div id="match-details-modal" class="match-details-modal">
+              <button class="back-btn" onclick="hideMatchModal()"><i class="fa-solid fa-arrow-right"></i> العودة للمباريات</button>
+              <h4 id="modal-match-title" style="color: var(--text-main); font-size: 14px; margin-bottom: 4px; text-align: center;"></h4>
+              <p id="modal-match-status" style="font-size: 11px; color: #10b981; margin-bottom: 12px; text-align: center; font-weight: bold;"></p>
               
-              <div class="match-tabs">
-                <button class="m-tab active" onclick="switchMatchTab('stats', event)">الإحصائيات</button>
-                <button class="m-tab" onclick="switchMatchTab('lineup', event)">التشكيل</button>
-                <button class="m-tab" onclick="switchMatchTab('events', event)">الأحداث</button>
+              <div class="m-tabs">
+                <button class="m-tab-btn active" onclick="switchMatchModalTab('stats', event)">الإحصائيات</button>
+                <button class="m-tab-btn" onclick="switchMatchModalTab('lineup', event)">التشكيل</button>
+                <button class="m-tab-btn" onclick="switchMatchModalTab('events', event)">الأحداث</button>
               </div>
 
-              <div id="tab-stats" class="m-tab-content active"></div>
-              <div id="tab-lineup" class="m-tab-content"></div>
-              <div id="tab-events" class="m-tab-content"></div>
+              <div id="modal-tab-stats" class="m-tab-body active"></div>
+              <div id="modal-tab-lineup" class="m-tab-body"></div>
+              <div id="modal-tab-events" class="m-tab-body"></div>
             </div>
 
-            <div class="match-list" id="match-list-container">
-              <div class="match-item" onclick="showAdvancedMatchDetails('الأهلي vs النصر (ودية)', 'جارية الآن - الدقيقة <span class="live-timer">82\'</span>', 'الاستحواذ: 62% - 38%<br>التسديدات: 14 - 5<br>الركنيات: 7 - 2', 'الأهلي: الشناوي - ربيعة - الشامي - تاحا<br>النصر: تشكيلة الفريق السعودي', 'د 12: هدف أول للأهلي<br>د 34: تعادل للنصر<br>د 55: أهداف متتالية للأهلي')">
-                <div class="league-title"><i class="fa-solid fa-trophy"></i> مباراة ودية (مباشر)</div>
-                <div class="match-teams">
-                  <span>الأهلي</span>
-                  <span class="match-score live">5 - 1</span>
-                  <span>النصر</span>
+            <div id="match-list-wrapper">
+              <div class="live-match-card" onclick="openMatchModal('الأهلي vs النصر', 'جارية الآن - الدقيقة <span class=\'live-timer\'>85\'</span>', 'الاستحواذ: 60% - 40%<br>التسديدات على المرمى: 8 - 3<br>الركنيات: 6 - 2<br>الأخطاء: 10 - 12', 'الأهلي: محمد الشناوي - ربيعة - الشامي - تاحا - مروان - إمام<br>النصر: حارس المرمى - رونالدو - ماني - بروزوفيتش', 'د 14: هدف أول للأهلي (إمام عاشور)<br>د 35: تعادل للنصر (كريستيانو رونالدو)<br>د 52: هدف للأهلي (بيرسي تاو)<br>د 70: هدف ثالث للأهلي')">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-trophy"></i> مباراة ودية كبرى</div>
+                <div class="match-teams-row">
+                  <span class="team-name right">الأهلي</span>
+                  <div class="match-center-score">
+                    <span>3 - 1</span>
+                    <span class="match-status-badge live">مباشر</span>
+                  </div>
+                  <span class="team-name left">النصر</span>
                 </div>
-                <div class="match-details-btn">اضغط لمتابعة التفاصيل والعداد الحي</div>
               </div>
 
-              <div class="match-item" onclick="showAdvancedMatchDetails('ريال مدريد vs برشلونة (تحضيرية)', 'جارية الآن - الدقيقة <span class="live-timer">44\'</span>', 'الاستحواذ: 50% - 50%<br>التسديدات: 6 - 6', 'تشكيلة النجوم الكلاسيكية', 'د 20: هدف أول لريال مدريد')">
-                <div class="league-title"><i class="fa-solid fa-globe"></i> ودية عالمية كبرى</div>
-                <div class="match-teams">
-                  <span>ريال مدريد</span>
-                  <span class="match-score live">1 - 0</span>
-                  <span>برشلونة</span>
+              <div class="live-match-card" onclick="openMatchModal('ريال مدريد vs برشلونة', 'جارية الآن - الدقيقة <span class=\'live-timer\'>50\'</span>', 'الاستحواذ: 52% - 48%<br>التسديدات على المرمى: 5 - 6<br>الركنيات: 4 - 4', 'ريال مدريد: كورتوا - روديجر - فالفيردي - مبابي<br>برشلونة: شتيجن - أراوخو - بيدري - ليفاندوفسكي', 'د 22: هدف أول لريال مدريد (كيليان مبابي)')">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 6px;"><i class="fa-solid fa-globe"></i> ودية عالمية</div>
+                <div class="match-teams-row">
+                  <span class="team-name right">ريال مدريد</span>
+                  <div class="match-center-score">
+                    <span>1 - 0</span>
+                    <span class="match-status-badge live">مباشر</span>
+                  </div>
+                  <span class="team-name left">برشلونة</span>
                 </div>
-                <div class="match-details-btn">اضغط لمتابعة التفاصيل والعداد الحي</div>
               </div>
             </div>
           </div>
@@ -700,50 +592,136 @@
       </div>
     </div>
 
-    <!-- ترتيب الدوريات الكبرى -->
+    <!-- الترتيب والهدافين (محدث لكل دوري) -->
     <div id="standings-tab" class="tab-content">
       <div class="main-layout" style="display: block;">
-        <div class="section-header"><i class="fa-solid fa-list-ol" style="color: var(--primary);"></i> ترتيب الدوريات الكبرى ومواعيد الإنطلاق الرسمية (موسم 2026/2027)</div>
+        <div class="section-header"><i class="fa-solid fa-list-ol" style="color: var(--primary);"></i> جداول الترتيب، الهدافين، والصناع (موسم 2026/2027)</div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
-          
-          <div class="widget-box">
-            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-flag"></i> الدوري المصري الممتاز</h4>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 15 أغسطس 2026</p>
-            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>الأهلي</td><td>بطل الموسم السابق</td></tr><tr><td>2</td><td>بيراميدز</td><td>معسكر خارجي بتركيا</td></tr><tr><td>3</td><td>الزمالك</td><td>ترتيب الصفقات والرخصة</td></tr></table>
-          </div>
-
-          <div class="widget-box">
-            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-shield-halved"></i> الدوري الإنجليزي الممتاز</h4>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 16 أغسطس 2026</p>
-            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>مانشستر سيتي</td><td>جولة تحضيرية آسيوية</td></tr><tr><td>2</td><td>أرسنال</td><td>معسكر مغلق</td></tr><tr><td>3</td><td>ليفربول</td><td>الاستعداد للموسم الجديد</td></tr></table>
-          </div>
-
-          <div class="widget-box">
-            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-futbol"></i> الدوري الإسباني</h4>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 14 أغسطس 2026</p>
-            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>ريال مدريد</td><td>مباريات ودية تحضيرية</td></tr><tr><td>2</td><td>برشلونة</td><td>معسكر إعداد صيفي</td></tr><tr><td>3</td><td>أتلتيكو مدريد</td><td>تدريبات مكثفة</td></tr></table>
-          </div>
-
-          <div class="widget-box">
-            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-flag"></i> دوري روشن السعودي</h4>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 22 أغسطس 2026</p>
-            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>الهلال</td><td>معسكر خارجي تحضيري</td></tr><tr><td>2</td><td>النصر</td><td>تدريبات ومعسكر صيفي</td></tr><tr><td>3</td><td>الاتحاد</td><td>الاستعداد للموسم الجديد</td></tr></table>
-          </div>
-
+        <div class="league-tabs">
+          <button class="l-tab active" onclick="switchLeague('egypt', event)">الدوري المصري</button>
+          <button class="l-tab" onclick="switchLeague('england', event)">الدوري الإنجليزي</button>
+          <button class="l-tab" onclick="switchLeague('spain', event)">الدوري الإسباني</button>
+          <button class="l-tab" onclick="switchLeague('saudi', event)">دوري روشن السعودي</button>
         </div>
+
+        <!-- دوري مصر -->
+        <div id="league-egypt" class="league-content">
+          <div class="league-section-box">
+            <h4 style="color: var(--primary); margin-bottom: 12px; font-size: 15px;"><i class="fa-solid fa-shield"></i> جدول ترتيب الدوري المصري الممتاز</h4>
+            <table class="standings-table">
+              <tr><th>#</th><th>الفريق</th><th>لعب</th><th>الفارق</th><th>النقاط</th></tr>
+              <tr><td>1</td><td>الأهلي</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>2</td><td>بيراميدز</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>3</td><td>الزمالك</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>4</td><td>المصري البورسعيدي</td><td>0</td><td>0</td><td>0</td></tr>
+            </table>
+            
+            <div class="stats-grid">
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-futbol"></i> هدافو الدوري المصري</h5>
+                <div class="stats-row"><span>وسام أبو علي (الأهلي)</span><span>0 أهداف</span></div>
+                <div class="stats-row"><span>فخري لاكاي (بيراميدز)</span><span>0 أهداف</span></div>
+              </div>
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-wand-magic-sparkles"></i> صانعو الألعاب</h5>
+                <div class="stats-row"><span>إمام عاشور (الأهلي)</span><span>0 صناعة</span></div>
+                <div class="stats-row"><span>مصطفى فتحي (بيراميدز)</span><span>0 صناعة</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- دوري إنجلترا -->
+        <div id="league-england" class="league-content" style="display: none;">
+          <div class="league-section-box">
+            <h4 style="color: var(--primary); margin-bottom: 12px; font-size: 15px;"><i class="fa-solid fa-shield"></i> جدول ترتيب الدوري الإنجليزي الممتاز</h4>
+            <table class="standings-table">
+              <tr><th>#</th><th>الفريق</th><th>لعب</th><th>الفارق</th><th>النقاط</th></tr>
+              <tr><td>1</td><td>مانشستر سيتي</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>2</td><td>أرسنال</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>3</td><td>ليفربول</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>4</td><td>تشيلسي</td><td>0</td><td>0</td><td>0</td></tr>
+            </table>
+            
+            <div class="stats-grid">
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-futbol"></i> هدافو الدوري الإنجليزي</h5>
+                <div class="stats-row"><span>إيرلينج هالاند (مانشستر سيتي)</span><span>0 أهداف</span></div>
+                <div class="stats-row"><span>محمد صلاح (ليفربول)</span><span>0 أهداف</span></div>
+              </div>
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-wand-magic-sparkles"></i> صانعو الألعاب</h5>
+                <div class="stats-row"><span>كيفين دي بروين (مانشستر سيتي)</span><span>0 صناعة</span></div>
+                <div class="stats-row"><span>بوكايو ساكا (أرسنال)</span><span>0 صناعة</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- دوري إسبانيا -->
+        <div id="league-spain" class="league-content" style="display: none;">
+          <div class="league-section-box">
+            <h4 style="color: var(--primary); margin-bottom: 12px; font-size: 15px;"><i class="fa-solid fa-shield"></i> جدول ترتيب الدوري الإسباني</h4>
+            <table class="standings-table">
+              <tr><th>#</th><th>الفريق</th><th>لعب</th><th>الفارق</th><th>النقاط</th></tr>
+              <tr><td>1</td><td>ريال مدريد</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>2</td><td>برشلونة</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>3</td><td>أتلتيكو مدريد</td><td>0</td><td>0</td><td>0</td></tr>
+            </table>
+            
+            <div class="stats-grid">
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-futbol"></i> هدافو الدوري الإسباني</h5>
+                <div class="stats-row"><span>كيليان مبابي (ريال مدريد)</span><span>0 أهداف</span></div>
+                <div class="stats-row"><span>روبرت ليفاندوفسكي (برشلونة)</span><span>0 أهداف</span></div>
+              </div>
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-wand-magic-sparkles"></i> صانعو الألعاب</h5>
+                <div class="stats-row"><span>جود بيلينغهام (ريال مدريد)</span><span>0 صناعة</span></div>
+                <div class="stats-row"><span>لامين يامال (برشلونة)</span><span>0 صناعة</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- دوري السعودية -->
+        <div id="league-saudi" class="league-content" style="display: none;">
+          <div class="league-section-box">
+            <h4 style="color: var(--primary); margin-bottom: 12px; font-size: 15px;"><i class="fa-solid fa-shield"></i> جدول ترتيب دوري روشن السعودي</h4>
+            <table class="standings-table">
+              <tr><th>#</th><th>الفريق</th><th>لعب</th><th>الفارق</th><th>النقاط</th></tr>
+              <tr><td>1</td><td>الهلال</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>2</td><td>النصر</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>3</td><td>الأهلي السعودي</td><td>0</td><td>0</td><td>0</td></tr>
+            </table>
+            
+            <div class="stats-grid">
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-futbol"></i> هدافو دوري روشن</h5>
+                <div class="stats-row"><span>كريستيانو رونالدو (النصر)</span><span>0 أهداف</span></div>
+                <div class="stats-row"><span>ألكسندر ميتروفيتش (الهلال)</span><span>0 أهداف</span></div>
+              </div>
+              <div class="stats-box">
+                <h5><i class="fa-solid fa-wand-magic-sparkles"></i> صانعو الألعاب</h5>
+                <div class="stats-row"><span>سالم الدوسري (الهلال)</span><span>0 صناعة</span></div>
+                <div class="stats-row"><span>روبن نيفيز (الهلال)</span><span>0 صناعة</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- تقويم السنة كاملة والرجوع للماضي والمستقبل -->
+    <!-- التقويم الرياضي -->
     <div id="calendar-tab" class="tab-content">
       <div class="main-layout" style="display: block;">
-        <div class="section-header"><i class="fa-solid fa-calendar-days" style="color: var(--primary);"></i> التقويم الرياضي الشامل للعام (يمكنك تصفح الماضي والمستقبل)</div>
+        <div class="section-header"><i class="fa-solid fa-calendar-days" style="color: var(--primary);"></i> التقويم الشامل للعام (تصفح الماضي والمستقبل)</div>
         
         <div class="calendar-container">
           <div class="calendar-header">
             <button class="cal-nav-btn" onclick="changeMonth(-1)"><i class="fa-solid fa-chevron-right"></i> الشهر السابق (الماضي)</button>
-            <h3 id="cal-month-year-title">يوليو 2026</h3>
+            <h3 id="cal-month-year-title" style="font-size: 16px;">يوليو 2026</h3>
             <button class="cal-nav-btn" onclick="changeMonth(1)">الشهر القادم (المستقبل) <i class="fa-solid fa-chevron-left"></i></button>
           </div>
 
@@ -757,47 +735,15 @@
             <div class="cal-day-name">سبت</div>
           </div>
           
-          <div class="calendar-grid" id="calendar-days-container" style="margin-top: 8px;">
-            <!-- يتم تعبئته بواسطة جافاسكريبت -->
-          </div>
+          <div class="calendar-grid" id="calendar-days-container" style="margin-top: 8px;"></div>
         </div>
-
-        <div class="widget-box" style="margin-top: 20px;">
-          <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-info-circle"></i> مواعيد المباريات والمنتخبات المهمة لشهر يوليو 2026:</h4>
-          <ul style="font-size: 13px; line-height: 1.8; padding-right: 20px; color: var(--text-muted);">
-            <li><strong>24 يوليو:</strong> مباريات ودية تحضيرية للأندية الكبرى (الأهلي × النصر، ريال مدريد × برشلونة).</li>
-            <li><strong>28 يوليو:</strong> انطلاق المعسكرات المغلقة للمنتخبات الوطنية استعداداً لأجندة الفيفا القادمة.</li>
-            <li><strong>15 - 22 أغسطس:</strong> الانطلاق الرسمي لمنافسات الدوريات الأوروبية والمحلية الكبرى لموسم 2026/2027.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- حول -->
-    <div id="about-tab" class="tab-content">
-      <div class="main-layout" style="display: block;">
-        <section class="about-section">
-          <div class="section-header"><i class="fa-solid fa-address-card" style="color: var(--primary);"></i> حول المنصة والمصمم</div>
-          <div class="about-grid">
-            <div class="about-item">
-              <i class="fa-solid fa-code"></i>
-              <h4>تصميم وتطوير الموقع</h4>
-              <p>تم تصميم وتطوير المنصة واكوادها البرمجية احترافياً بواسطة المصمم <strong>عبدالرحمن منتصر ماهر</strong>.</p>
-            </div>
-            <div class="about-item">
-              <i class="fa-solid fa-location-dot"></i>
-              <h4>موقعنا ومقراتنا</h4>
-              <p>نعمل ونغطي الأحداث الرياضية مباشرة من مقراتنا في: <strong>المنيا - القاهرة</strong>.</p>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   </div>
 
   <footer>
     <p>جميع الحقوق محفوظة © 2026 | <strong>أخبار الرياضة 24</strong></p>
-    <p style="margin-top: 5px; font-size: 11px;">تصميم وتطوير: <strong>عبدالرحمن منتصر ماهر</strong> | الموقع الرئيسي: <strong>المنيا - القاهرة</strong></p>
+    <p style="margin-top: 5px; font-size: 11px;">تصميم وتطوير: <strong>عبدالرحمن منتصر ماهر</strong></p>
   </footer>
 
   <script>
@@ -807,56 +753,22 @@
       if (html.getAttribute('data-theme') === 'dark') {
         html.setAttribute('data-theme', 'light');
         themeIcon.className = 'fa-solid fa-sun';
-        localStorage.setItem('theme', 'light');
       } else {
         html.setAttribute('data-theme', 'dark');
         themeIcon.className = 'fa-solid fa-moon';
-        localStorage.setItem('theme', 'dark');
       }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('theme-icon').className = 'fa-solid fa-sun';
-      }
       renderCalendar();
     });
-
-    function toggleNotifications() {
-      const btn = document.getElementById('notif-btn');
-      if(btn.style.color === 'rgb(230, 0, 0)') {
-        btn.style.color = '';
-        alert('تم إيقاف الإشعارات بنجاح.');
-      } else {
-        btn.style.color = '#e60000';
-        alert('تم تفعيل الإشعارات بنجاح! ستتلقى تنبيهات فورية بالأهداف ومواعيد المباريات.');
-      }
-    }
-
-    function filterSearch() {
-      const query = document.getElementById('search-box').value.toLowerCase();
-      const cards = document.querySelectorAll('.news-title-card');
-      switchTab('home');
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if(text.includes(query)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
 
     function switchTab(tabId, event) {
       if (event) event.preventDefault();
       document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
       
-      const targetTab = document.getElementById(tabId + '-tab');
-      if(targetTab) targetTab.classList.add('active');
-      
+      document.getElementById(tabId + '-tab').classList.add('active');
       if (event && event.currentTarget) {
         event.currentTarget.classList.add('active');
       } else {
@@ -864,97 +776,51 @@
           if(link.getAttribute('onclick')?.includes(tabId)) link.classList.add('active');
         });
       }
-      
-      document.getElementById('article-page').style.display = 'none';
-      document.getElementById('main-site-content').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function openArticle(title, date, body) {
-      document.getElementById('main-site-content').style.display = 'none';
-      const artPage = document.getElementById('article-page');
-      artPage.style.display = 'block';
-      
-      document.getElementById('art-title').innerText = title;
-      document.getElementById('art-date').innerText = date;
-      document.getElementById('art-body').innerText = body;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function hideArticle() {
-      document.getElementById('article-page').style.display = 'none';
-      document.getElementById('main-site-content').style.display = 'block';
-    }
-
-    function toggleReadingMode() {
-      const box = document.getElementById('article-container-box');
-      if(box.style.backgroundColor === 'rgb(11, 15, 25)' || box.style.backgroundColor === '#0b0f19') {
-        box.style.backgroundColor = '';
-        box.style.padding = '25px';
-      } else {
-        box.style.backgroundColor = 'var(--bg-dark)';
-        box.style.padding = '40px 60px';
-        window.scrollTo({ top: 200, behavior: 'smooth' });
-      }
-    }
-
-    function postComment() {
-      const name = document.getElementById('comment-name').value.trim();
-      const text = document.getElementById('comment-text').value.trim();
-      if(!name || !text) {
-        alert('يرجى كتابة الاسم والتعليق أولاً!');
-        return;
-      }
-      const list = document.getElementById('comments-list');
-      const newCard = document.createElement('div');
-      newCard.className = 'comment-card';
-      newCard.innerHTML = `<div class="comment-author">${name}</div><div class="comment-text">${text}</div>`;
-      list.prepend(newCard);
-      document.getElementById('comment-name').value = '';
-      document.getElementById('comment-text').value = '';
-      alert('تم نشر تعليقك بنجاح!');
-    }
-
-    function showAdvancedMatchDetails(title, status, stats, lineup, events) {
-      document.getElementById('match-list-container').style.display = 'none';
-      const view = document.getElementById('match-details-view');
-      view.classList.add('active');
-      
-      document.getElementById('det-match-title').innerText = title;
-      document.getElementById('det-match-status').innerHTML = status;
-      
-      document.getElementById('tab-stats').innerHTML = stats;
-      document.getElementById('tab-lineup').innerHTML = lineup;
-      document.getElementById('tab-events').innerHTML = events;
-    }
-
-    function hideMatchDetails() {
-      document.getElementById('match-details-view').classList.remove('active');
-      document.getElementById('match-list-container').style.display = 'block';
-    }
-
-    function switchMatchTab(tabName, event) {
-      document.querySelectorAll('.m-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.m-tab-content').forEach(c => c.classList.remove('active'));
+    function switchLeague(leagueKey, event) {
+      document.querySelectorAll('.l-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.league-content').forEach(c => c.style.display = 'none');
       
       event.currentTarget.classList.add('active');
-      document.getElementById('tab-' + tabName).classList.add('active');
+      document.getElementById('league-' + leagueKey).style.display = 'block';
     }
 
-    // إدارة التقويم التفاعلي (الماضي والمستقبل)
-    let currentMonth = 6; // يوليو (0-indexed: 6)
+    function openMatchModal(title, status, stats, lineup, events) {
+      document.getElementById('match-list-wrapper').style.display = 'none';
+      const modal = document.getElementById('match-details-modal');
+      modal.classList.add('active');
+      
+      document.getElementById('modal-match-title').innerText = title;
+      document.getElementById('modal-match-status').innerHTML = status;
+      
+      document.getElementById('modal-tab-stats').innerHTML = stats;
+      document.getElementById('modal-tab-lineup').innerHTML = lineup;
+      document.getElementById('modal-tab-events').innerHTML = events;
+    }
+
+    function hideMatchModal() {
+      document.getElementById('match-details-modal').classList.remove('active');
+      document.getElementById('match-list-wrapper').style.display = 'block';
+    }
+
+    function switchMatchModalTab(tabName, event) {
+      document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.m-tab-body').forEach(b => b.classList.remove('active'));
+      
+      event.currentTarget.classList.add('active');
+      document.getElementById('modal-tab-' + tabName).classList.add('active');
+    }
+
+    let currentMonth = 6;
     let currentYear = 2026;
     const monthsNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
 
     function changeMonth(direction) {
       currentMonth += direction;
-      if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-      } else if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-      }
+      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+      else if (currentMonth < 0) { currentMonth = 11; currentYear--; }
       renderCalendar();
     }
 
@@ -967,45 +833,28 @@
       const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
       const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-      // أيام فارغة قبل أول يوم في الشهر
       for (let i = 0; i < firstDayIndex; i++) {
         const emptyDiv = document.createElement('div');
         emptyDiv.className = 'cal-day empty';
         container.appendChild(emptyDiv);
       }
 
-      // أيام الشهر
       for (let day = 1; day <= totalDays; day++) {
         const dayDiv = document.createElement('div');
         dayDiv.className = 'cal-day';
-        
-        // تمييز بعض أيام المباريات كمثال تفاعلي
-        let hasMatch = false;
-        if (currentYear === 2026 && currentMonth === 6 && (day === 24 || day === 28)) {
-          hasMatch = true;
-          dayDiv.classList.add('has-match');
-        } else if (currentYear === 2026 && currentMonth === 7 && (day >= 14 && day <= 22)) {
-          hasMatch = true;
-          dayDiv.classList.add('has-match');
-        }
+        let hasMatch = (currentYear === 2026 && currentMonth === 6 && (day === 24 || day === 28));
+        if (hasMatch) dayDiv.classList.add('has-match');
 
         dayDiv.innerHTML = `<span>${day}</span>${hasMatch ? '<span class="match-dot">مباريات</span>' : ''}`;
-        
-        dayDiv.onclick = () => {
-          alert(`مواعيد المباريات والأحداث ليوم ${day} ${monthsNames[currentMonth]} ${currentYear}:\n- متابعة المباريات والفعاليات الرياضية المبرمجة لهذا اليوم.`);
-        };
-
+        dayDiv.onclick = () => alert(`مباريات وأحداث يوم ${day} ${monthsNames[currentMonth]} ${currentYear}`);
         container.appendChild(dayDiv);
       }
     }
 
-    let liveMinute = 82;
+    let liveMin = 85;
     setInterval(() => {
-      liveMinute++;
-      const liveElements = document.querySelectorAll('.live-timer');
-      liveElements.forEach(el => {
-        el.innerText = liveMinute + "'";
-      });
+      liveMin++;
+      document.querySelectorAll('.live-timer').forEach(el => el.innerText = liveMin + "'");
     }, 60000);
   </script>
 </body>
