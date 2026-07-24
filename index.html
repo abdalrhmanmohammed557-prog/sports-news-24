@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أخبار الرياضة 24 | تغطية حية ومباشرة</title>
+  <title>أخبار الرياضة 24 | التغطية الشاملة والتقويم الرياضي</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -147,7 +147,7 @@
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
-      padding: 12px 14px;
+      padding: 12px 16px;
       font-size: 13px;
       font-weight: 700;
       white-space: nowrap;
@@ -189,10 +189,7 @@
       gap: 6px;
     }
 
-    .ticker-content-container {
-      flex-grow: 1;
-      overflow: hidden;
-    }
+    .ticker-content-container { flex-grow: 1; overflow: hidden; }
 
     .ticker-content {
       display: inline-block;
@@ -233,61 +230,40 @@
       color: var(--text-main);
     }
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 18px;
+    .news-title-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .news-card {
+    .news-title-card {
       background: var(--card-bg);
-      border-radius: 12px;
-      overflow: hidden;
       border: 1px solid var(--card-border);
-      display: flex;
-      flex-direction: column;
-      transition: all 0.25s ease;
+      padding: 16px 20px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-
-    .news-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: 0 10px 25px rgba(230, 0, 0, 0.1);
-    }
-
-    .news-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-    }
-
-    .news-title {
-      font-size: 15px;
-      font-weight: 800;
-      line-height: 1.5;
-      margin-bottom: 10px;
-      color: var(--text-main);
-    }
-
-    .news-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .news-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .news-title-card:hover {
+      border-color: var(--primary);
+      transform: translateX(-4px);
+    }
+
+    .news-title-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .news-title-card span {
       font-size: 11px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--card-border);
-      padding-top: 10px;
+      color: var(--primary);
+      font-weight: bold;
+      white-space: nowrap;
     }
 
     .widget-box {
@@ -299,34 +275,13 @@
       margin-bottom: 20px;
     }
 
-    .calendar-bar {
-      display: flex;
-      gap: 5px;
-      margin-bottom: 12px;
-      overflow-x: auto;
-      padding-bottom: 5px;
-    }
-
-    .cal-btn {
-      background: var(--bg-dark);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 5px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .cal-btn.active, .cal-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-
-    .match-list { display: flex; flex-direction: column; gap: 8px; }
+    .match-list { display: flex; flex-direction: column; gap: 10px; }
 
     .match-item {
       background: var(--bg-dark);
       border: 1px solid var(--card-border);
       border-radius: 8px;
-      padding: 10px;
+      padding: 12px;
       cursor: pointer;
     }
     .match-item:hover { border-color: var(--primary); }
@@ -335,7 +290,7 @@
       font-size: 11px;
       color: var(--primary);
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 5px;
@@ -346,26 +301,26 @@
       justify-content: space-between;
       align-items: center;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-main);
     }
 
-    .match-score {
+    .match-score.live {
       background: var(--card-bg);
-      padding: 3px 6px;
+      padding: 4px 8px;
       border-radius: 6px;
-      font-size: 10px;
-      color: #0ea5e9;
+      font-size: 11px;
+      color: #10b981;
       border: 1px solid var(--card-border);
+      animation: pulse-live 1.5s infinite;
     }
-    .match-score.live { color: #10b981; animation: pulse-live 1.5s infinite; }
 
     @keyframes pulse-live {
       0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; }
     }
 
     .match-details-btn {
-      margin-top: 5px;
+      margin-top: 6px;
       text-align: center;
       font-size: 10px;
       color: var(--text-muted);
@@ -384,12 +339,12 @@
       background: var(--primary);
       color: #fff;
       border: none;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 6px;
       font-family: 'Tajawal', sans-serif;
       font-weight: bold;
       cursor: pointer;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-size: 11px;
     }
 
@@ -415,7 +370,6 @@
     .m-tab-content { display: none; font-size: 12px; line-height: 1.5; color: var(--text-main); }
     .m-tab-content.active { display: block; }
 
-    /* المقال وقراءة هادئة + تعليقات */
     .article-view {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -445,18 +399,12 @@
       gap: 5px;
     }
 
-    /* صندوق التعليقات */
     .comments-section {
       margin-top: 30px;
       border-top: 1px solid var(--card-border);
       padding-top: 20px;
     }
-    .comment-form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+    .comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
     .comment-input, .comment-textarea {
       background: var(--bg-dark);
       border: 1px solid var(--card-border);
@@ -489,20 +437,88 @@
     .comment-author { font-weight: bold; font-size: 12px; color: var(--primary); margin-bottom: 4px; }
     .comment-text { font-size: 12px; color: var(--text-main); }
 
-    /* جداول الدوريات */
     .standings-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
+      font-size: 13px;
       margin-top: 10px;
     }
     .standings-table th, .standings-table td {
-      padding: 8px;
+      padding: 10px;
       text-align: center;
       border-bottom: 1px solid var(--card-border);
     }
     .standings-table th { color: var(--primary); font-weight: 800; background: var(--bg-dark); }
     .standings-table td:nth-child(2) { text-align: right; }
+
+    /* تصميم التقويم السنوي المتفاعل */
+    .calendar-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .calendar-header h3 {
+      font-size: 18px;
+      color: var(--text-main);
+    }
+    .cal-nav-btn {
+      background: var(--bg-dark);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: bold;
+    }
+    .cal-nav-btn:hover { border-color: var(--primary); color: var(--primary); }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      text-align: center;
+    }
+    .cal-day-name {
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 800;
+      padding: 8px 0;
+    }
+    .cal-day {
+      background: var(--bg-dark);
+      border: 1px solid var(--card-border);
+      padding: 10px 4px;
+      border-radius: 6px;
+      font-size: 13px;
+      min-height: 45px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .cal-day.empty { background: transparent; border: none; cursor: default; }
+    .cal-day:hover:not(.empty) { border-color: var(--primary); }
+    .cal-day.has-match {
+      background: rgba(230, 0, 0, 0.08);
+      border-color: var(--primary);
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .match-dot {
+      font-size: 9px;
+      margin-top: 2px;
+      color: var(--text-muted);
+    }
 
     .about-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 25px; }
     .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 15px; }
@@ -535,10 +551,9 @@
         أخبار الرياضة <span>24</span>
       </a>
       
-      <!-- محرك البحث الفوري وزر التنبيهات والوضع الليلي -->
       <div class="header-actions">
         <div class="search-box">
-          <input type="text" class="search-input" id="search-box" placeholder="ابحث عن فريق، خبر..." onkeyup="filterSearch()">
+          <input type="text" class="search-input" id="search-box" placeholder="ابحث عن خبر..." onkeyup="filterSearch()">
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         
@@ -555,16 +570,8 @@
     <nav>
       <div class="nav-container">
         <a class="nav-link active" onclick="switchTab('home', event)"><i class="fa-solid fa-house"></i> الرئيسية</a>
-        <a class="nav-link" onclick="switchTab('egypt', event)"><i class="fa-solid fa-flag"></i> المصري</a>
-        <a class="nav-link" onclick="switchTab('england', event)"><i class="fa-solid fa-shield-halved"></i> الإنجليزي</a>
-        <a class="nav-link" onclick="switchTab('spain', event)"><i class="fa-solid fa-futbol"></i> الإسباني</a>
-        <a class="nav-link" onclick="switchTab('italy', event)"><i class="fa-solid fa-futbol"></i> الإيطالي</a>
-        <a class="nav-link" onclick="switchTab('germany', event)"><i class="fa-solid fa-futbol"></i> الألماني</a>
-        <a class="nav-link" onclick="switchTab('france', event)"><i class="fa-solid fa-futbol"></i> الفرنسي</a>
-        <a class="nav-link" onclick="switchTab('portugal', event)"><i class="fa-solid fa-futbol"></i> البرتغالي</a>
-        <a class="nav-link" onclick="switchTab('netherlands', event)"><i class="fa-solid fa-futbol"></i> الهولندي</a>
-        <a class="nav-link" onclick="switchTab('saudi', event)"><i class="fa-solid fa-flag"></i> السعودي</a>
-        <a class="nav-link" onclick="switchTab('ucl', event)"><i class="fa-solid fa-star"></i> الأبطال</a>
+        <a class="nav-link" onclick="switchTab('standings', event)"><i class="fa-solid fa-list-ol"></i> ترتيب الدوريات</a>
+        <a class="nav-link" onclick="switchTab('calendar', event)"><i class="fa-solid fa-calendar-days"></i> التقويم والمواعيد (2026)</a>
         <a class="nav-link" onclick="switchTab('about', event)"><i class="fa-solid fa-circle-info"></i> حول</a>
       </div>
     </nav>
@@ -576,12 +583,12 @@
     </div>
     <div class="ticker-content-container">
       <div class="ticker-content">
-        ترقب انطلاق مواسم الدوريات الكبرى • الأهلي يكتسح النصر بخماسية ودية • يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030 • الزمالك ينهي الرخصة الأفريقية
+        مواعيد انطلاق الدوريات والمنتخبات متاحة الآن في التقويم • إعلان جدول الدوريات الكبرى • الأهلي يكتسح النصر ودياً • يورجن كلوب مديراً فنياً لألمانيا
       </div>
     </div>
   </div>
 
-  <!-- صفحة قراءة الخبر بالتفصيل مع التعليقات -->
+  <!-- صفحة تفاصيل الخبر -->
   <div id="article-page" class="main-layout" style="display: none;">
     <main style="grid-column: 1 / -1;">
       <div class="article-view active" id="article-container-box">
@@ -593,7 +600,6 @@
         <div style="font-size: 11px; color: var(--primary); margin-bottom: 18px;"><i class="fa-solid fa-clock"></i> <span id="art-date"></span> | تغطية خاصة</div>
         <p id="art-body" style="font-size: 14px; color: var(--text-muted); line-height: 2;"></p>
 
-        <!-- صندوق التعليقات التفاعلي -->
         <div class="comments-section">
           <h3 style="font-size: 15px; margin-bottom: 15px; color: var(--text-main);"><i class="fa-solid fa-comments"></i> التعليقات والمناقشات</h3>
           <div class="comment-form">
@@ -603,8 +609,8 @@
           </div>
           <div id="comments-list">
             <div class="comment-card">
-              <div class="comment-author">أحمد المصرى</div>
-              <div class="comment-text">تغطية رائعة جداً وفي انتظار انطلاق مباريات الدوري بفارغ الصبر!</div>
+              <div class="comment-author">أحمد المصري</div>
+              <div class="comment-text">موقع احترافي والتقويم الجديد رائع جداً لتبادل المواعيد!</div>
             </div>
           </div>
         </div>
@@ -619,40 +625,28 @@
         <main>
           <div class="section-header">
             <i class="fa-solid fa-newspaper" style="color: var(--primary);"></i>
-            أحدث التغطيات الإخبارية الشاملة
+            أحدث عناوين الأخبار الرياضية
           </div>
 
-          <div class="news-grid" id="home-news-container">
-            <div class="news-card" onclick="openArticle('الزمالك يُعلن إنهاء ملفات الرخصة الأفريقية قبل انتهاء مهلة الكاف', '24 يوليو 2026', 'كثفت إدارة نادي الزمالك برئاسة حسين لبيب جهودها وحسمت أبرز الملفات المالية العالقة للحصول على الرخصة الأفريقية، وذلك قبل ساعات من انتهاء المهلة النهائية التي حددها الاتحاد الأفريقي لكرة القدم كاف يوم السبت 25 يوليو. وأوضح مسؤولو القلعة البيضاء أنهم أرسلوا المستندات الرسمية لإثبات تسوية القضايا والمديونيات لضمان المشاركة القارية دون عوائق تنظيمية.')">
-              <div class="news-body">
-                <h3 class="news-title">الزمالك يُعلن إنهاء ملفات "الرخصة الأفريقية" قبل انتهاء مهلة الكاف</h3>
-                <p class="news-desc">كثفت إدارة نادي الزمالك برئاسة حسين لبيب جهودها وحسمت أبرز الملفات المالية العالقة للحصول على الرخصة الأفريقية...</p>
-                <div class="news-footer"><span><i class="fa-solid fa-clock"></i> 24 يوليو 2026</span> <span style="color:var(--primary); font-weight:bold;">اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span></div>
-              </div>
+          <div class="news-title-list" id="home-news-container">
+            <div class="news-title-card" onclick="openArticle('إعلان مواعيد الجولات الرسمية لانطلاق الدوريات الكبرى لموسم 2026/2027', '24 يوليو 2026', 'أعلنت الروابط المنظمة للدوريات الأوروبية والعربية الكبرى عن الجداول الرسمية ومواعيد انطلاق المباريات، وسط ترقب واسع من الجماهير في جميع أنحاء العالم لجدول المواجهات النارية مع بداية شهر أغسطس المقبل.')">
+              <h3>إعلان مواعيد الجولات الرسمية لانطلاق الدوريات الكبرى لموسم 2026/2027</h3>
+              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
             </div>
 
-            <div class="news-card" onclick="openArticle('الأهلي يكتسح النصر بخماسية ودية في أول بصمة للمدرب الحسين عموتة', '24 يوليو 2026', 'حقق الفريق الأول لكرة القدم بنادي الأهلي فوزاً عريضاً بنتيجة 5-1 على فريق النصر في أولى مبارياته الودية التحضيرية تحت قيادة المدير الفني الجديد الحسين عموتة. وشهدت المباراة تألقاً هجومياً ملحوظاً وتجربة عدد من العناصر الشابة، إلى جانب مناقشة المدرب لإمكانية تصعيد مجموعة من قطاع الناشئين لمعسكر إسبانيا المقبل.')">
-              <div class="news-body">
-                <h3 class="news-title">الأهلي يكتسح النصر بخماسية ودية في أول بصمة للمدرب الحسين عموتة</h3>
-                <p class="news-desc">حقق الأهلي فوزاً عريضاً بنتيجة 5-1 على فريق النصر ودياً تحت قيادة الحسين عموتة مع تألق الوافدين والعناصر الشابة...</p>
-                <div class="news-footer"><span><i class="fa-solid fa-clock"></i> 24 يوليو 2026</span> <span style="color:var(--primary); font-weight:bold;">اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span></div>
-              </div>
+            <div class="news-title-card" onclick="openArticle('الزمالك يُعلن إنهاء ملفات الرخصة الأفريقية قبل انتهاء مهلة الكاف', '24 يوليو 2026', 'كثفت إدارة نادي الزمالك جهودها وحسمت أبرز الملفات المالية العالقة للحصول على الرخصة الأفريقية، وذلك قبل ساعات من انتهاء المهلة النهائية التي حددها الاتحاد الأفريقي لكرة القدم.')">
+              <h3>الزمالك يُعلن إنهاء ملفات "الرخصة الأفريقية" قبل انتهاء مهلة الكاف</h3>
+              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
             </div>
 
-            <div class="news-card" onclick="openArticle('رسمياً.. يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030', '24 يوليو 2026', 'أعلن الاتحاد الألماني لكرة القدم رسمياً تعيين المدرب المخضرم يورجن كلوب مديراً فنياً للمنتخب الأول بعقد يمتد حتى عام 2030. يأتي هذا القرار في محاولة لإعادة هيكلة الماكينات الألمانية بعد الخروج المخيب في البطولات الأخيرة وتجهيز جيل جديد ينافس بقوة على الألقاب العالمية.')">
-              <div class="news-body">
-                <h3 class="news-title">رسمياً.. يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030</h3>
-                <p class="news-desc">أعلن الاتحاد الألماني لكرة القدم رسمياً تعيين المدرب المخضرم يورجن كلوب مديراً فنياً للمنتخب الأول بعقد يمتد حتى عام 2030...</p>
-                <div class="news-footer"><span><i class="fa-solid fa-clock"></i> 24 يوليو 2026</span> <span style="color:var(--primary); font-weight:bold;">اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span></div>
-              </div>
+            <div class="news-title-card" onclick="openArticle('الأهلي يكتسح النصر بخماسية ودية في أول بصمة للمدرب الحسين عموتة', '24 يوليو 2026', 'حقق الفريق الأول لكرة القدم بنادي الأهلي فوزاً عريضاً بنتيجة 5-1 على فريق النصر في أولى مبارياته الودية التحضيرية تحت قيادة المدير الفني الجديد الحسين عموتة.')">
+              <h3>الأهلي يكتسح النصر بخماسية ودية في أول بصمة للمدرب الحسين عموتة</h3>
+              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
             </div>
 
-            <div class="news-card" onclick="openArticle('الأندية الأوروبية تبدأ معسكرات التحضير للموسم الجديد', '24 يوليو 2026', 'تبدأ الأندية في الدوريات الكبرى (الإنجليزي، الإسباني، الإيطالي، السعودي وغيرها) تدريباتها التحضيرية ومعسكرات الإعداد الصيفية، وسط ترقب جماهير واسع للمنافسات والصفقات الجديدة.')">
-              <div class="news-body">
-                <h3 class="news-title">الأندية الكبرى تبدأ معسكرات التحضير استعداداً لانطلاق المواسم</h3>
-                <p class="news-desc">تبدأ الأندية في الدوريات الكبرى تدريباتها التحضيرية ومعسكرات الإعداد الصيفية وسط ترقب جماهيري واسع...</p>
-                <div class="news-footer"><span><i class="fa-solid fa-clock"></i> 24 يوليو 2026</span> <span style="color:var(--primary); font-weight:bold;">اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span></div>
-              </div>
+            <div class="news-title-card" onclick="openArticle('رسمياً.. يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030', '24 يوليو 2026', 'أعلن الاتحاد الألماني لكرة القدم رسمياً تعيين المدرب المخضرم يورجن كلوب مديراً فنياً للمنتخب الأول بعقد يمتد حتى عام 2030 لإعادة هيكلة الماكينات الألمانية.')">
+              <h3>رسمياً.. يورجن كلوب مديراً فنياً لمنتخب ألمانيا حتى 2030</h3>
+              <span>اقرأ التفاصيل <i class="fa-solid fa-angle-left"></i></span>
             </div>
           </div>
         </main>
@@ -660,15 +654,8 @@
         <aside>
           <div class="widget-box">
             <div class="section-header" style="font-size: 15px;">
-              <i class="fa-solid fa-calendar-days" style="color: var(--primary);"></i>
-              تقويم المباريات الشامل
-            </div>
-
-            <div class="calendar-bar">
-              <button class="cal-btn active" onclick="filterMatches('today', event)">اليوم</button>
-              <button class="cal-btn" onclick="filterMatches('tomorrow', event)">غداً</button>
-              <button class="cal-btn" onclick="filterMatches('nextmonth', event)">أغسطس</button>
-              <button class="cal-btn" onclick="filterMatches('twomonths', event)">سبتمبر</button>
+              <i class="fa-solid fa-circle-dot" style="color: #10b981;"></i>
+              المباريات المباشرة الآن (Live)
             </div>
 
             <div id="match-details-view" class="match-details-view">
@@ -688,25 +675,24 @@
             </div>
 
             <div class="match-list" id="match-list-container">
-              <div class="match-group" data-day="today">
-                <div class="match-item" onclick="showAdvancedMatchDetails('الأهلي vs النصر', 'مباراة ودية تحضيرية (جارية)', 'الاستحواذ: 62% - 38%', 'تشكيلة الفريقين التجريبية', 'أهداف ودية وتحضيرية')">
-                  <div class="league-title"><i class="fa-solid fa-trophy"></i> مباراة ودية</div>
-                  <div class="match-teams">
-                    <span>الأهلي</span>
-                    <span class="match-score live">5 - 1 (مباشر)</span>
-                    <span>النصر</span>
-                  </div>
-                  <div class="match-details-btn">اضغط لمتابعة التفاصيل والعداد الحي</div>
+              <div class="match-item" onclick="showAdvancedMatchDetails('الأهلي vs النصر (ودية)', 'جارية الآن - الدقيقة <span class="live-timer">82\'</span>', 'الاستحواذ: 62% - 38%<br>التسديدات: 14 - 5<br>الركنيات: 7 - 2', 'الأهلي: الشناوي - ربيعة - الشامي - تاحا<br>النصر: تشكيلة الفريق السعودي', 'د 12: هدف أول للأهلي<br>د 34: تعادل للنصر<br>د 55: أهداف متتالية للأهلي')">
+                <div class="league-title"><i class="fa-solid fa-trophy"></i> مباراة ودية (مباشر)</div>
+                <div class="match-teams">
+                  <span>الأهلي</span>
+                  <span class="match-score live">5 - 1</span>
+                  <span>النصر</span>
                 </div>
+                <div class="match-details-btn">اضغط لمتابعة التفاصيل والعداد الحي</div>
               </div>
-              <div class="match-group" data-day="tomorrow" style="display:none;">
-                <div class="match-item"><div class="league-title">مباريات ودية غداً</div><div class="match-teams"><span>استعدادات الأندية</span><span class="match-score">قريباً</span><span>للموسم</span></div></div>
-              </div>
-              <div class="match-group" data-day="nextmonth" style="display:none;">
-                <div class="match-item"><div class="league-title">انطلاق الدوريات (أغسطس)</div><div class="match-teams"><span>الدوريات الكبرى</span><span class="match-score">تبدأ قريباً</span><span>الموسم الجديد</span></div></div>
-              </div>
-              <div class="match-group" data-day="twomonths" style="display:none;">
-                <div class="match-item"><div class="league-title">دوري أبطال أوروبا (سبتمبر)</div><div class="match-teams"><span>مرحلة المجموعات</span><span class="match-score">سبتمبر</span><span>البطولة الأعرق</span></div></div>
+
+              <div class="match-item" onclick="showAdvancedMatchDetails('ريال مدريد vs برشلونة (تحضيرية)', 'جارية الآن - الدقيقة <span class="live-timer">44\'</span>', 'الاستحواذ: 50% - 50%<br>التسديدات: 6 - 6', 'تشكيلة النجوم الكلاسيكية', 'د 20: هدف أول لريال مدريد')">
+                <div class="league-title"><i class="fa-solid fa-globe"></i> ودية عالمية كبرى</div>
+                <div class="match-teams">
+                  <span>ريال مدريد</span>
+                  <span class="match-score live">1 - 0</span>
+                  <span>برشلونة</span>
+                </div>
+                <div class="match-details-btn">اضغط لمتابعة التفاصيل والعداد الحي</div>
               </div>
             </div>
           </div>
@@ -714,67 +700,78 @@
       </div>
     </div>
 
-    <!-- صفحات الدوريات الكبرى (المصري، الإنجليزي، الإسباني، الإيطالي، الألماني، الفرنسي، البرتغالي، الهولندي، السعودي، دوري الأبطال) -->
-    
-    <!-- المصري -->
-    <div id="egypt-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-flag" style="color: var(--primary);"></i> الدوري المصري الممتاز (الموسم الجديد لم يبدأ بعد - فترة الإعداد والتحضير)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>الأهلي</td><td>فترة الإعداد الصيفي</td></tr><tr><td>2</td><td>بيراميدز</td><td>معسكر خارجي في تركيا</td></tr><tr><td>3</td><td>الزمالك</td><td>ترتيب الملفات والصفقات</td></tr></table></div>
-    </div></div>
+    <!-- ترتيب الدوريات الكبرى -->
+    <div id="standings-tab" class="tab-content">
+      <div class="main-layout" style="display: block;">
+        <div class="section-header"><i class="fa-solid fa-list-ol" style="color: var(--primary);"></i> ترتيب الدوريات الكبرى ومواعيد الإنطلاق الرسمية (موسم 2026/2027)</div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+          
+          <div class="widget-box">
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-flag"></i> الدوري المصري الممتاز</h4>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 15 أغسطس 2026</p>
+            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>الأهلي</td><td>بطل الموسم السابق</td></tr><tr><td>2</td><td>بيراميدز</td><td>معسكر خارجي بتركيا</td></tr><tr><td>3</td><td>الزمالك</td><td>ترتيب الصفقات والرخصة</td></tr></table>
+          </div>
 
-    <!-- الإنجليزي -->
-    <div id="england-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> الدوري الإنجليزي الممتاز (لم يبدأ بعد - فترة التحضيرات والجولات الصيفية)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>مانشستر سيتي</td><td>جولة تحضيرية آسيوية</td></tr><tr><td>2</td><td>أرسنال</td><td>معسكر تدريبي مغلق</td></tr><tr><td>3</td><td>ليفربول</td><td>الاستعداد للموسم الجديد</td></tr></table></div>
-    </div></div>
+          <div class="widget-box">
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-shield-halved"></i> الدوري الإنجليزي الممتاز</h4>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 16 أغسطس 2026</p>
+            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>مانشستر سيتي</td><td>جولة تحضيرية آسيوية</td></tr><tr><td>2</td><td>أرسنال</td><td>معسكر مغلق</td></tr><tr><td>3</td><td>ليفربول</td><td>الاستعداد للموسم الجديد</td></tr></table>
+          </div>
 
-    <!-- الإسباني -->
-    <div id="spain-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-futbol" style="color: var(--primary);"></i> الدوري الإسباني (لم يبدأ بعد - صفقات وإعداد الأندية)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>ريال مدريد</td><td>الاستعداد للموسم الجديد</td></tr><tr><td>2</td><td>برشلونة</td><td>مباريات ودية تحضيرية</td></tr><tr><td>3</td><td>أتلتيكو مدريد</td><td>معسكر إعداد</td></tr></table></div>
-    </div></div>
+          <div class="widget-box">
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-futbol"></i> الدوري الإسباني</h4>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 14 أغسطس 2026</p>
+            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>ريال مدريد</td><td>مباريات ودية تحضيرية</td></tr><tr><td>2</td><td>برشلونة</td><td>معسكر إعداد صيفي</td></tr><tr><td>3</td><td>أتلتيكو مدريد</td><td>تدريبات مكثفة</td></tr></table>
+          </div>
 
-    <!-- الإيطالي -->
-    <div id="italy-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-futbol" style="color: var(--primary);"></i> الدوري الإيطالي (لم يبدأ بعد - مرحلة التدريبات والاستعداد)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>إنتر ميلان</td><td>فترة التحضير</td></tr><tr><td>2</td><td>يوفنتوس</td><td>تدريبات بدنية مكثفة</td></tr><tr><td>3</td><td>ميلان</td><td>الجولة الصيفية</td></tr></table></div>
-    </div></div>
+          <div class="widget-box">
+            <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-flag"></i> دوري روشن السعودي</h4>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">موعد الانطلاق الرسمي: 22 أغسطس 2026</p>
+            <table class="standings-table"><tr><th>#</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>الهلال</td><td>معسكر خارجي تحضيري</td></tr><tr><td>2</td><td>النصر</td><td>تدريبات ومعسكر صيفي</td></tr><tr><td>3</td><td>الاتحاد</td><td>الاستعداد للموسم الجديد</td></tr></table>
+          </div>
 
-    <!-- الألماني -->
-    <div id="germany-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-futbol" style="color: var(--primary);"></i> الدوري الألماني (لم يبدأ بعد - فترة الإعداد)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>بايرن ميونخ</td><td>الاستعداد لانطلاق البوندسليغا</td></tr><tr><td>2</td><td>باير ليفركوزن</td><td>معسكر تحضيري</td></tr><tr><td>3</td><td>دورتموند</td><td>مباريات ودية</td></tr></table></div>
-    </div></div>
+        </div>
+      </div>
+    </div>
 
-    <!-- الفرنسي -->
-    <div id="france-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-futbol" style="color: var(--primary);"></i> الدوري الفرنسي (لم يبدأ بعد - فترة الإعداد)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>باريس سان جيرمان</td><td>التحضيرات الصيفية</td></tr><tr><td>2</td><td>مارسيليا</td><td>معسكر إعداد</td></tr><tr><td>3</td><td>موناكو</td><td>استعدادات الموسم</td></tr></table></div>
-    </div></div>
+    <!-- تقويم السنة كاملة والرجوع للماضي والمستقبل -->
+    <div id="calendar-tab" class="tab-content">
+      <div class="main-layout" style="display: block;">
+        <div class="section-header"><i class="fa-solid fa-calendar-days" style="color: var(--primary);"></i> التقويم الرياضي الشامل للعام (يمكنك تصفح الماضي والمستقبل)</div>
+        
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <button class="cal-nav-btn" onclick="changeMonth(-1)"><i class="fa-solid fa-chevron-right"></i> الشهر السابق (الماضي)</button>
+            <h3 id="cal-month-year-title">يوليو 2026</h3>
+            <button class="cal-nav-btn" onclick="changeMonth(1)">الشهر القادم (المستقبل) <i class="fa-solid fa-chevron-left"></i></button>
+          </div>
 
-    <!-- البرتغالي -->
-    <div id="portugal-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-futbol" style="color: var(--primary);"></i> الدوري البرتغالي (لم يبدأ بعد - التحضيرات جارية)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>بنفيكا</td><td>فترة التحضير</td></tr><tr><td>2</td><td>سبورتنج لشبونة</td><td>مباريات ودية</td></tr><tr><td>3</td><td>بورتو</td><td>استعدادات الموسم الجديد</td></tr></table></div>
-    </div></div>
+          <div class="calendar-grid">
+            <div class="cal-day-name">أحد</div>
+            <div class="cal-day-name">إثنين</div>
+            <div class="cal-day-name">ثلاثاء</div>
+            <div class="cal-day-name">أربعاء</div>
+            <div class="cal-day-name">خميس</div>
+            <div class="cal-day-name">جمعة</div>
+            <div class="cal-day-name">سبت</div>
+          </div>
+          
+          <div class="calendar-grid" id="calendar-days-container" style="margin-top: 8px;">
+            <!-- يتم تعبئته بواسطة جافاسكريبت -->
+          </div>
+        </div>
 
-    <!-- الهولندي -->
-    <div id="netherlands-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-futbol" style="color: var(--primary);"></i> الدوري الهولندي (لم يبدأ بعد - الاستعدادات الصيفية)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>أياكس أمستردام</td><td>فترة التحضير</td></tr><tr><td>2</td><td>فاينورد</td><td>معسكر إعداد</td></tr><tr><td>3</td><td>آيندهوفن</td><td>تدريبات الصيف</td></tr></table></div>
-    </div></div>
-
-    <!-- السعودي -->
-    <div id="saudi-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-flag" style="color: var(--primary);"></i> دوري روشن السعودي (لم يبدأ بعد - المعسكرات الخارجية)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المركز</th><th>الفريق</th><th>الحالة</th></tr><tr><td>1</td><td>الهلال</td><td>معسكر خارجي تحضيري</td></tr><tr><td>2</td><td>النصر</td><td>تدريبات ومعسكر صيفي</td></tr><tr><td>3</td><td>الاتحاد</td><td>الاستعداد للموسم الجديد</td></tr><tr><td>4</td><td>الأهلي السعودي</td><td>فترة الإعداد</td></tr></table></div>
-    </div></div>
-
-    <!-- دوري الأبطال -->
-    <div id="ucl-tab" class="tab-content"><div class="main-layout" style="display: block;">
-      <div class="section-header"><i class="fa-solid fa-star" style="color: var(--primary);"></i> دوري أبطال أوروبا (يبدأ في سبتمبر القادم)</div>
-      <div class="widget-box"><table class="standings-table"><tr><th>المرحلة</th><th>الحالة</th><th>الموعد</th></tr><tr><td>الأدوار التمهيدية</td><td>جارية للتصفيات المؤهلة</td><td>أغسطس</td></tr><tr><td>مرحلة المجموعات</td><td>في انتظار سحب القرعة وبداية المباريات</td><td>سبتمبر 2026</td></tr></table></div>
-    </div></div>
+        <div class="widget-box" style="margin-top: 20px;">
+          <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 15px;"><i class="fa-solid fa-info-circle"></i> مواعيد المباريات والمنتخبات المهمة لشهر يوليو 2026:</h4>
+          <ul style="font-size: 13px; line-height: 1.8; padding-right: 20px; color: var(--text-muted);">
+            <li><strong>24 يوليو:</strong> مباريات ودية تحضيرية للأندية الكبرى (الأهلي × النصر، ريال مدريد × برشلونة).</li>
+            <li><strong>28 يوليو:</strong> انطلاق المعسكرات المغلقة للمنتخبات الوطنية استعداداً لأجندة الفيفا القادمة.</li>
+            <li><strong>15 - 22 أغسطس:</strong> الانطلاق الرسمي لمنافسات الدوريات الأوروبية والمحلية الكبرى لموسم 2026/2027.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- حول -->
     <div id="about-tab" class="tab-content">
@@ -804,7 +801,6 @@
   </footer>
 
   <script>
-    // وظيفة التبديل بين الوضع الليلي والنهاري
     function toggleTheme() {
       const html = document.documentElement;
       const themeIcon = document.getElementById('theme-icon');
@@ -825,9 +821,9 @@
         document.documentElement.setAttribute('data-theme', 'light');
         document.getElementById('theme-icon').className = 'fa-solid fa-sun';
       }
+      renderCalendar();
     });
 
-    // تفعيل / إلغاء الإشعارات
     function toggleNotifications() {
       const btn = document.getElementById('notif-btn');
       if(btn.style.color === 'rgb(230, 0, 0)') {
@@ -835,14 +831,13 @@
         alert('تم إيقاف الإشعارات بنجاح.');
       } else {
         btn.style.color = '#e60000';
-        alert('تم تفعيل الإشعارات بنجاح! ستتلقى تنبيهات فورية بالأهداف والأخبار العاجلة.');
+        alert('تم تفعيل الإشعارات بنجاح! ستتلقى تنبيهات فورية بالأهداف ومواعيد المباريات.');
       }
     }
 
-    // محرك البحث الفوري
     function filterSearch() {
       const query = document.getElementById('search-box').value.toLowerCase();
-      const cards = document.querySelectorAll('.news-card');
+      const cards = document.querySelectorAll('.news-title-card');
       switchTab('home');
       cards.forEach(card => {
         const text = card.innerText.toLowerCase();
@@ -865,7 +860,6 @@
       if (event && event.currentTarget) {
         event.currentTarget.classList.add('active');
       } else {
-        // تحديد الناف بار المناسب برمجياً إذا تم الاستدعاء داخلياً
         document.querySelectorAll('.nav-link').forEach(link => {
           if(link.getAttribute('onclick')?.includes(tabId)) link.classList.add('active');
         });
@@ -892,7 +886,6 @@
       document.getElementById('main-site-content').style.display = 'block';
     }
 
-    // وضع القراءة الهادئة للمقالات
     function toggleReadingMode() {
       const box = document.getElementById('article-container-box');
       if(box.style.backgroundColor === 'rgb(11, 15, 25)' || box.style.backgroundColor === '#0b0f19') {
@@ -905,40 +898,21 @@
       }
     }
 
-    // إضافة تعليق تفاعلي جديد
     function postComment() {
       const name = document.getElementById('comment-name').value.trim();
       const text = document.getElementById('comment-text').value.trim();
-      
       if(!name || !text) {
         alert('يرجى كتابة الاسم والتعليق أولاً!');
         return;
       }
-      
       const list = document.getElementById('comments-list');
       const newCard = document.createElement('div');
       newCard.className = 'comment-card';
       newCard.innerHTML = `<div class="comment-author">${name}</div><div class="comment-text">${text}</div>`;
-      
       list.prepend(newCard);
       document.getElementById('comment-name').value = '';
       document.getElementById('comment-text').value = '';
       alert('تم نشر تعليقك بنجاح!');
-    }
-
-    function filterMatches(dayKey, event) {
-      document.querySelectorAll('.cal-btn').forEach(btn => btn.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-      
-      document.querySelectorAll('.match-group').forEach(group => {
-        if(group.getAttribute('data-day') === dayKey) {
-          group.style.display = 'block';
-        } else {
-          group.style.display = 'none';
-        }
-      });
-      document.getElementById('match-details-view').classList.remove('active');
-      document.getElementById('match-list-container').style.display = 'block';
     }
 
     function showAdvancedMatchDetails(title, status, stats, lineup, events) {
@@ -966,7 +940,73 @@
       event.currentTarget.classList.add('active');
       document.getElementById('tab-' + tabName).classList.add('active');
     }
+
+    // إدارة التقويم التفاعلي (الماضي والمستقبل)
+    let currentMonth = 6; // يوليو (0-indexed: 6)
+    let currentYear = 2026;
+    const monthsNames = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+
+    function changeMonth(direction) {
+      currentMonth += direction;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      } else if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const container = document.getElementById('calendar-days-container');
+      const title = document.getElementById('cal-month-year-title');
+      container.innerHTML = '';
+      title.innerText = monthsNames[currentMonth] + ' ' + currentYear;
+
+      const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+      const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      // أيام فارغة قبل أول يوم في الشهر
+      for (let i = 0; i < firstDayIndex; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.className = 'cal-day empty';
+        container.appendChild(emptyDiv);
+      }
+
+      // أيام الشهر
+      for (let day = 1; day <= totalDays; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'cal-day';
+        
+        // تمييز بعض أيام المباريات كمثال تفاعلي
+        let hasMatch = false;
+        if (currentYear === 2026 && currentMonth === 6 && (day === 24 || day === 28)) {
+          hasMatch = true;
+          dayDiv.classList.add('has-match');
+        } else if (currentYear === 2026 && currentMonth === 7 && (day >= 14 && day <= 22)) {
+          hasMatch = true;
+          dayDiv.classList.add('has-match');
+        }
+
+        dayDiv.innerHTML = `<span>${day}</span>${hasMatch ? '<span class="match-dot">مباريات</span>' : ''}`;
+        
+        dayDiv.onclick = () => {
+          alert(`مواعيد المباريات والأحداث ليوم ${day} ${monthsNames[currentMonth]} ${currentYear}:\n- متابعة المباريات والفعاليات الرياضية المبرمجة لهذا اليوم.`);
+        };
+
+        container.appendChild(dayDiv);
+      }
+    }
+
+    let liveMinute = 82;
+    setInterval(() => {
+      liveMinute++;
+      const liveElements = document.querySelectorAll('.live-timer');
+      liveElements.forEach(el => {
+        el.innerText = liveMinute + "'";
+      });
+    }, 60000);
   </script>
 </body>
 </html>
-
