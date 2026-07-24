@@ -142,44 +142,12 @@
       100% { transform: translateX(100%); }
     }
 
-    .ad-banner-top {
-      max-width: 1200px;
-      margin: 20px auto 0;
-      padding: 0 15px;
-    }
-
-    .ad-box {
-      background: #111a2e;
-      border: 1px dashed #2b3d5c;
-      border-radius: 12px;
-      min-height: 90px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 13px;
-      text-align: center;
-      position: relative;
-    }
-
-    .ad-badge {
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      font-size: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: #718096;
-    }
-
     .main-layout {
       max-width: 1200px;
       margin: 25px auto;
       padding: 0 15px;
       display: grid;
-      grid-template-columns: 2.3fr 1fr;
+      grid-template-columns: 2.2fr 1.1fr;
       gap: 25px;
     }
 
@@ -265,14 +233,66 @@
       border-radius: 12px;
       border: 1px solid var(--card-border);
       padding: 18px;
-      margin-bottom: 20px;
     }
 
-    .matches-frame {
-      width: 100%;
-      height: 520px;
-      border: none;
+    .match-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .match-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
       border-radius: 8px;
+      padding: 12px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.2s ease;
+    }
+
+    .match-item:hover {
+      background: rgba(230, 0, 0, 0.05);
+      border-color: var(--primary);
+    }
+
+    .league-title {
+      font-size: 11px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .match-teams {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .match-score {
+      background: #0b0f19;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #38bdf8;
+      border: 1px solid #1e293b;
+    }
+
+    .match-details-btn {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
 
     .about-section {
@@ -355,14 +375,6 @@
     </div>
   </div>
 
-  <div class="ad-banner-top">
-    <div class="ad-box">
-      <span class="ad-badge">إعلان</span>
-      <i class="fa-solid fa-rectangle-ad fa-2x" style="margin-bottom: 6px; color: #3b82f6;"></i>
-      <p>مساحة إعلانية مخصصة (728 × 90)</p>
-    </div>
-  </div>
-
   <div class="main-layout" id="home">
     <main>
       <div class="section-header">
@@ -382,20 +394,40 @@
       <div class="widget-box">
         <div class="section-header" style="font-size: 16px;">
           <i class="fa-regular fa-calendar-check" style="color: var(--primary);"></i>
-          جدول مباريات اليوم المباشر
+          مباريات اليوم والتفاصيل المباشرة
         </div>
-        
-        <iframe 
-          class="matches-frame" 
-          src="https://www.scorebat.com/embed/livescore/" 
-          title="مباريات اليوم المباشرة">
-        </iframe>
-      </div>
 
-      <div class="ad-box" style="min-height: 250px;">
-        <span class="ad-badge">إعلان</span>
-        <i class="fa-solid fa-rectangle-ad fa-2x" style="margin-bottom: 6px; color: #3b82f6;"></i>
-        <p>مساحة إعلانية جانبية (300 × 250)</p>
+        <div class="match-list">
+          <a href="https://www.yallakora.com/match-center" target="_blank" rel="noopener" class="match-item">
+            <div class="league-title"><i class="fa-solid fa-trophy"></i> الدوري المصري</div>
+            <div class="match-teams">
+              <span>الأهلي</span>
+              <span class="match-score">20:00</span>
+              <span>الزمالك</span>
+            </div>
+            <div class="match-details-btn">اضغط لمتابعة التغطية والتفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+          </a>
+
+          <a href="https://www.yallakora.com/match-center" target="_blank" rel="noopener" class="match-item">
+            <div class="league-title"><i class="fa-solid fa-trophy"></i> الدوري الإسباني</div>
+            <div class="match-teams">
+              <span>ريال مدريد</span>
+              <span class="match-score">22:00</span>
+              <span>برشلونة</span>
+            </div>
+            <div class="match-details-btn">اضغط لمتابعة التغطية والتفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+          </a>
+
+          <a href="https://www.yallakora.com/match-center" target="_blank" rel="noopener" class="match-item">
+            <div class="league-title"><i class="fa-solid fa-trophy"></i> الدوري الإنجليزي</div>
+            <div class="match-teams">
+              <span>مانشستر سيتي</span>
+              <span class="match-score">18:30</span>
+              <span>ليفربول</span>
+            </div>
+            <div class="match-details-btn">اضغط لمتابعة التغطية والتفاصيل <i class="fa-solid fa-arrow-left"></i></div>
+          </a>
+        </div>
       </div>
     </aside>
   </div>
@@ -441,7 +473,6 @@
       const container = document.getElementById('news-container');
       const loader = document.getElementById('loader');
       
-      // استخدام كواسر CORS متعددة ومباشرة لضمان التحميل حتى لو فشل أحد الخوادم
       const rssTarget = 'https://www.yallakora.com/rss/news';
       const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssTarget)}`;
 
@@ -449,7 +480,6 @@
         const response = await fetch(proxyUrl);
         const data = await response.json();
         
-        // تحويل النص البرمجي إلى XML لقراءة الأخبار بدون وسيط قد يتعطل
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data.contents, "text/xml");
         const items = xmlDoc.querySelectorAll("item");
@@ -461,24 +491,43 @@
           document.getElementById('ticker-text').innerText = 'عاجل: ' + firstTitle + ' • متابعة حية ومباشرة لأحدث الأخبار الرياضية المحلية والعالمية';
 
           items.forEach((item, index) => {
-            if (index > 12) return; // عرض أحدث 12 خبر
+            if (index > 11) return;
 
             const title = item.querySelector("title")?.textContent || "";
-            const link = item.querySelector("link")?.textContent || "#";
+            let rawLink = item.querySelector("link")?.textContent || "#";
             const pubDate = item.querySelector("pubDate")?.textContent || "";
-            
-            // استخراج صورة الخبر أو استخدام صورة افتراضية عالية الجودة
+            const description = item.querySelector("description")?.textContent || "";
+
+            // تصحيح الرابط لضمان فتحه بشكل صحيح
+            let link = rawLink.trim();
+            if (!link.startsWith('http')) {
+              link = 'https://www.yallakora.com' + (link.startsWith('/') ? '' : '/') + link;
+            }
+
+            // استخراج رابط الصورة من داخل الوصف إن وُجد
+            let imgUrl = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80';
             const enclosure = item.querySelector("enclosure")?.getAttribute("url");
-            const defaultImg = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80';
-            const imgUrl = enclosure || defaultImg;
+            
+            if (enclosure) {
+              imgUrl = enclosure;
+            } else if (description) {
+              const imgMatch = description.match(/src=["'](.*?)["']/);
+              if (imgMatch && imgMatch[1]) {
+                imgUrl = imgMatch[1];
+              }
+            }
 
             const formattedTime = pubDate ? new Date(pubDate).toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'}) : 'الآن';
 
             const card = `
               <div class="news-card">
-                <img class="news-img" src="${imgUrl}" alt="${title}" onerror="this.src='${defaultImg}'">
+                <a href="${link}" target="_blank" rel="noopener noreferrer">
+                  <img class="news-img" src="${imgUrl}" alt="${title}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80';">
+                </a>
                 <div class="news-body">
-                  <h3 class="news-title">${title}</h3>
+                  <a href="${link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+                    <h3 class="news-title">${title}</h3>
+                  </a>
                   <div class="news-footer">
                     <span><i class="fa-solid fa-clock"></i> ${formattedTime}</span>
                     <a href="${link}" target="_blank" rel="noopener noreferrer" class="read-btn">تفاصيل الخبر <i class="fa-solid fa-arrow-left"></i></a>
@@ -497,7 +546,6 @@
       }
     }
 
-    // أخبار احتياطية سريعة تظهر مباشرة في حال وجود مشكلة في الاتصال بالشبكة
     function showFallbackNews() {
       const container = document.getElementById('news-container');
       const loader = document.getElementById('loader');
@@ -506,21 +554,25 @@
       document.getElementById('ticker-text').innerText = 'عاجل: متابعة حية لمباريات اليوم والتغطيات الرياضية المباشرة';
 
       const fallbackData = [
-        { title: "استعدادات مكثفة للأندية المحلية قبل انطلاق المواجهات القادمة في البطولة", time: "منذ قليل", link: "#" },
-        { title: "تطورات جديدة في صفقة انتقال نجم المنتخب خلال فترة الميركاتو الصيفي", time: "منذ 15 دقيقة", link: "#" },
-        { title: "نتائج الفحوصات الطبية تحسم موقف هداف الفريق من المشاركة في المباراة القادمة", time: "منذ 30 دقيقة", link: "#" },
-        { title: "ارتفاع وتيرة الاستعدادات في المعسكر التدريبي قبل القمة المرتقبة", time: "منذ ساعة", link: "#" }
+        { title: "استعدادات مكثفة للأندية المحلية قبل انطلاق المواجهات القادمة في البطولة", time: "منذ قليل", link: "https://www.yallakora.com" },
+        { title: "تطورات جديدة في صفقة انتقال نجم المنتخب خلال فترة الميركاتو الصيفي", time: "منذ 15 دقيقة", link: "https://www.yallakora.com" },
+        { title: "نتائج الفحوصات الطبية تحسم موقف هداف الفريق من المشاركة في المباراة القادمة", time: "منذ 30 دقيقة", link: "https://www.yallakora.com" },
+        { title: "ارتفاع وتيرة الاستعدادات في المعسكر التدريبي قبل القمة المرتقبة", time: "منذ ساعة", link: "https://www.yallakora.com" }
       ];
 
       fallbackData.forEach(item => {
         container.innerHTML += `
           <div class="news-card">
-            <img class="news-img" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80" alt="${item.title}">
+            <a href="${item.link}" target="_blank" rel="noopener noreferrer">
+              <img class="news-img" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80" alt="${item.title}">
+            </a>
             <div class="news-body">
-              <h3 class="news-title">${item.title}</h3>
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+                <h3 class="news-title">${item.title}</h3>
+              </a>
               <div class="news-footer">
                 <span><i class="fa-solid fa-clock"></i> ${item.time}</span>
-                <a href="${item.link}" class="read-btn">تفاصيل الخبر <i class="fa-solid fa-arrow-left"></i></a>
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="read-btn">تفاصيل الخبر <i class="fa-solid fa-arrow-left"></i></a>
               </div>
             </div>
           </div>
