@@ -20,11 +20,7 @@
       --text-muted: #94a3b8;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Tajawal', sans-serif;
@@ -50,17 +46,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 18px 20px;
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 900;
       color: #fff;
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .logo span {
@@ -68,16 +64,6 @@
       background: linear-gradient(45deg, #e60000, #ff5252);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    .designer-badge {
-      font-size: 13px;
-      background: rgba(230, 0, 0, 0.15);
-      border: 1px solid rgba(230, 0, 0, 0.4);
-      padding: 6px 14px;
-      border-radius: 20px;
-      color: #ff8080;
-      font-weight: 700;
     }
 
     nav {
@@ -114,7 +100,7 @@
       background: rgba(255,255,255,0.03);
     }
 
-    /* Breaking News Ticker (من الشمال لليمين) */
+    /* Breaking News Ticker (من اليسار إلى اليمين) */
     .ticker-wrap {
       background-color: #121929;
       border: 1px solid var(--card-border);
@@ -138,16 +124,13 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 4px 0 10px rgba(0,0,0,0.3);
     }
 
     .ticker-content-container {
       flex-grow: 1;
       overflow: hidden;
-      position: relative;
     }
 
-    /* الحركة من اليسار لليمين */
     .ticker-content {
       display: inline-block;
       white-space: nowrap;
@@ -160,6 +143,39 @@
     @keyframes ticker-ltr {
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
+    }
+
+    /* Ad Banner Style */
+    .ad-banner-top {
+      max-width: 1200px;
+      margin: 20px auto 0;
+      padding: 0 15px;
+    }
+
+    .ad-box {
+      background: #111a2e;
+      border: 1px dashed #2b3d5c;
+      border-radius: 12px;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+      position: relative;
+    }
+
+    .ad-badge {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      font-size: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #718096;
     }
 
     /* Main Grid Layout */
@@ -233,13 +249,6 @@
       color: #fff;
     }
 
-    .news-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
     .news-footer {
       display: flex;
       justify-content: space-between;
@@ -248,6 +257,7 @@
       color: var(--text-muted);
       border-top: 1px solid var(--card-border);
       padding-top: 12px;
+      margin-top: 10px;
     }
 
     .read-btn {
@@ -262,25 +272,23 @@
       border-radius: 12px;
       border: 1px solid var(--card-border);
       padding: 18px;
-      position: sticky;
-      top: 90px;
+      margin-bottom: 20px;
     }
 
     .matches-frame {
       width: 100%;
-      height: 580px;
+      height: 520px;
       border: none;
       border-radius: 8px;
     }
 
-    /* قسم حول (About Section) */
+    /* قسم حول */
     .about-section {
       background: linear-gradient(135deg, #151f32 0%, #0d1322 100%);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 30px;
-      margin-top: 40px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      margin-top: 20px;
     }
 
     .about-grid {
@@ -297,22 +305,9 @@
       border-radius: 12px;
     }
 
-    .about-item i {
-      font-size: 24px;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .about-item h4 {
-      font-size: 16px;
-      margin-bottom: 6px;
-      color: #fff;
-    }
-
-    .about-item p {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
+    .about-item i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
+    .about-item h4 { font-size: 16px; margin-bottom: 6px; color: #fff; }
+    .about-item p { font-size: 14px; color: var(--text-muted); }
 
     .loader {
       text-align: center;
@@ -345,12 +340,9 @@
         <i class="fa-solid fa-trophy"></i>
         أخبار الرياضة <span>24</span>
       </a>
-      <div class="designer-badge">
-        <i class="fa-solid fa-paint-brush"></i> المصمم: عبدالرحمن منتصر ماهر
-      </div>
     </div>
     
-    <!-- الأقسام الرئيسية -->
+    <!-- الأقسام المطلوب إدراجها -->
     <nav>
       <div class="nav-container">
         <a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
@@ -369,20 +361,27 @@
       <i class="fa-solid fa-bolt"></i> عاجل
     </div>
     <div class="ticker-content-container">
-      <div class="ticker-content">
+      <div class="ticker-content" id="ticker-text">
         متابعة حية ومباشرة لأحدث الأخبار الرياضية المحلية والعالمية • صفقات الميركاتو الصيفي لحظة بلحظة • تغطية خاصة لأهم المباريات والبطولات
       </div>
     </div>
   </div>
 
+  <!-- مساحة إعلانية برأس الصفحة -->
+  <div class="ad-banner-top">
+    <div class="ad-box">
+      <span class="ad-badge">إعلان</span>
+      <i class="fa-solid fa-rectangle-ad fa-2x" style="margin-bottom: 6px; color: #3b82f6;"></i>
+      <p>مساحة إعلانية مخصصة (728 × 90)</p>
+    </div>
+  </div>
+
   <!-- المحتوى الرئيسي -->
   <div class="main-layout" id="home">
-    
-    <!-- تغذية الأخبار -->
     <main>
       <div class="section-header">
         <i class="fa-solid fa-newspaper" style="color: var(--primary);"></i>
-        أحدث التغطيات الأخبارية
+        أحدث التغطيات الأخبارية الحية
       </div>
 
       <div id="loader" class="loader">
@@ -393,7 +392,7 @@
       <div class="news-grid" id="news-container"></div>
     </main>
 
-    <!-- قائمة المباريات -->
+    <!-- القائمة الجانبية -->
     <aside>
       <div class="widget-box">
         <div class="section-header" style="font-size: 16px;">
@@ -407,11 +406,16 @@
           title="مباريات اليوم المباشرة">
         </iframe>
       </div>
-    </aside>
 
+      <div class="ad-box" style="min-height: 250px;">
+        <span class="ad-badge">إعلان</span>
+        <i class="fa-solid fa-rectangle-ad fa-2x" style="margin-bottom: 6px; color: #3b82f6;"></i>
+        <p>مساحة إعلانية جانبية (300 × 250)</p>
+      </div>
+    </aside>
   </div>
 
-  <!-- قسم حول (About Us) -->
+  <!-- قسم حول (مدرج به بيانات المصمم والموقع) -->
   <div class="main-layout" style="margin-top: 0;">
     <div style="grid-column: 1 / -1;">
       <section id="about" class="about-section">
@@ -450,36 +454,34 @@
   </footer>
 
   <script>
-    // مفتاح الـ API الخاص بك
-    const API_KEY = "911574f7532b4a09bb0fb2707e6e8f72"; 
-
     async function fetchLiveNews() {
       const container = document.getElementById('news-container');
       const loader = document.getElementById('loader');
-
-      const url = `https://newsapi.org/v2/everything?q=كرة OR رياضة OR الأهلي OR الزمالك&language=ar&sortBy=publishedAt&apiKey=${API_KEY}`;
+      
+      const rssUrl = 'https://www.yallakora.com/rss/news';
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
       try {
-        const response = await fetch(url);
+        const response = await fetch(apiUrl);
         const data = await response.json();
 
         loader.style.display = 'none';
 
-        if (data.status === "ok" && data.articles.length > 0) {
-          data.articles.forEach(article => {
-            if (!article.urlToImage || !article.title) return;
+        if (data.status === 'ok' && data.items.length > 0) {
+          document.getElementById('ticker-text').innerText = 'عاجل: ' + data.items[0].title + ' • متابعة حية ومباشرة لأحدث الأخبار الرياضية المحليه والعالمية';
+
+          data.items.forEach(item => {
+            const defaultImg = 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80';
+            const imgUrl = item.thumbnail || item.enclosure?.link || defaultImg;
 
             const card = `
               <div class="news-card">
-                <img class="news-img" src="${article.urlToImage}" alt="${article.title}" onerror="this.src='https://via.placeholder.com/400x200?text=أخبار+الرياضة+24'">
+                <img class="news-img" src="${imgUrl}" alt="${item.title}" onerror="this.src='${defaultImg}'">
                 <div class="news-body">
-                  <div>
-                    <h3 class="news-title">${article.title}</h3>
-                    <p class="news-desc">${article.description || 'اضغط لمتابعة قراءة تفاصيل الخبر كاملاً من المصدر...'}</p>
-                  </div>
+                  <h3 class="news-title">${item.title}</h3>
                   <div class="news-footer">
-                    <span><i class="fa-solid fa-newspaper"></i> ${article.source.name}</span>
-                    <a href="${article.url}" target="_blank" class="read-btn">قراءة الخبر <i class="fa-solid fa-arrow-left"></i></a>
+                    <span><i class="fa-solid fa-clock"></i> ${new Date(item.pubDate).toLocaleTimeString('ar-EG', {hour:'2-digit', minute:'2-digit'})}</span>
+                    <a href="${item.link}" target="_blank" class="read-btn">تفاصيل الخبر <i class="fa-solid fa-arrow-left"></i></a>
                   </div>
                 </div>
               </div>
@@ -487,10 +489,11 @@
             container.innerHTML += card;
           });
         } else {
-          container.innerHTML = `<p style="grid-column: 1/-1; text-align: center;">لا توجد أخبار متاحة حالياً، تحقق من صحة المفتاح.</p>`;
+          container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">تعذر تحميل الأخبار حالياً، يرجى المحاولة لاحقاً.</p>`;
         }
       } catch (error) {
-        loader.innerHTML = `<p style="color: var(--primary);">حدث خطأ أثناء تحميل البيانات، يرجى إعادة التأكد من الاتصال.</p>`;
+        console.error('Error fetching news:', error);
+        loader.innerHTML = `<p style="color: var(--primary);">حدث خطأ أثناء الاتصال بالخدمة. يرجى إعادة تنشيط الصفحة.</p>`;
       }
     }
 
